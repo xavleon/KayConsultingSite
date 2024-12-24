@@ -129,9 +129,9 @@ export function Navbar() {
               onClick={() => toggleMobileMenu(false)}
             >
               <span className="flex flex-col">
-                <span>Kay Leon</span>
+                <span>Karla Leon</span>
                 <span className="text-sm font-medium text-gray-600">
-                  Bookkeeping & Realty Services
+                  Bookkeeping • Real Estate • Business Automation
                 </span>
               </span>
             </Link>
