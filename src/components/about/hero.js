@@ -23,7 +23,7 @@ export function Hero() {
             <p className="text-lg leading-8 text-gray-600 mb-8">
               With over 20 years of experience, I provide professional
               bookkeeping services and real estate expertise to individuals,
-              entrepreneurs, and small businesses in [Your City/Region].
+              entrepreneurs, and small businesses in Queens, NY.
             </p>
             <div className="flex flex-wrap gap-4 justify-center lg:justify-start">
               <div className="bg-blue-50 px-6 py-4 rounded-lg">
@@ -37,9 +37,9 @@ export function Hero() {
             </div>
           </div>
           <div className="relative">
-            <div className="aspect-[4/3] relative rounded-2xl overflow-hidden shadow-xl">
+            <div className="aspect-[3/3] relative rounded-2xl overflow-hidden shadow-xl">
               <Image
-                src="/Kay-bg_3.jpg"
+                src="/Kay-bg_2.jpg"
                 alt="Karla Leon - Professional Bookkeeper and Real Estate Agent"
                 fill
                 className="object-cover"

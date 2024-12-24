@@ -1,28 +1,43 @@
-import Image from "next/image";
 import { Card, CardContent } from "@/components/ui/card";
+import { QuoteIcon } from "lucide-react";
 
 const testimonials = [
   {
     name: "Alice Johnson",
     role: "Small Business Owner",
-    image: "/placeholder.svg?height=100&width=100",
     content:
       "Kay Bookkeeping has been instrumental in helping me manage my finances. Their attention to detail and professional service is unmatched.",
   },
   {
     name: "Bob Smith",
     role: "Freelance Designer",
-    image: "/placeholder.svg?height=100&width=100",
     content:
       "As a freelancer, keeping track of my finances was always a challenge. Thanks to Kay Bookkeeping, I can focus on my work knowing my books are in order.",
   },
   {
     name: "Carol Davis",
     role: "Startup Founder",
-    image: "/placeholder.svg?height=100&width=100",
     content:
       "The team at Kay Bookkeeping has been a crucial partner in our startup's growth. Their expertise has helped us make informed financial decisions.",
   },
+  //   {
+  //     name: "David Wilson",
+  //     role: "Real Estate Investor",
+  //     content:
+  //       "Kay's combined knowledge of bookkeeping and real estate has been a game-changer for my investment strategy. They've helped me optimize my property finances and identify great investment opportunities.",
+  //   },
+  //   {
+  //     name: "Emma Thompson",
+  //     role: "Restaurant Owner",
+  //     content:
+  //       "Running a restaurant comes with complex financials. Kay Bookkeeping has simplified everything for me, from daily sales tracking to payroll management. Their service has given me peace of mind.",
+  //   },
+  //   {
+  //     name: "Frank Rodriguez",
+  //     role: "Construction Company Owner",
+  //     content:
+  //       "Kay's expertise in both bookkeeping and real estate has been perfect for my construction business. They've helped me navigate project-based accounting and property development finances with ease.",
+  //   },
 ];
 
 export function Testimonials() {
@@ -43,29 +58,19 @@ export function Testimonials() {
           {testimonials.map((testimonial, index) => (
             <Card
               key={index}
-              className="bg-gray-800 shadow-lg border border-gray-700"
+              className="bg-gray-800 shadow-lg border border-gray-700 flex flex-col"
             >
-              <CardContent className="p-6">
-                <div className="flex flex-col items-center mb-4 text-center">
-                  <div className="w-20 h-20 rounded-full overflow-hidden mb-4 bg-blue-500">
-                    <Image
-                      src={testimonial.image}
-                      alt={testimonial.name}
-                      width={80}
-                      height={80}
-                      className="object-cover"
-                    />
-                  </div>
-                  <div>
-                    <h3 className="font-semibold text-lg text-white">
-                      {testimonial.name}
-                    </h3>
-                    <p className="text-sm text-blue-300">{testimonial.role}</p>
-                  </div>
-                </div>
-                <p className="text-gray-300 text-center italic">
+              <CardContent className="p-6 flex flex-col h-full">
+                <QuoteIcon className="w-8 h-8 text-blue-400 mb-4 mx-auto" />
+                <p className="text-gray-300 text-center flex-grow">
                   &ldquo;{testimonial.content}&rdquo;
                 </p>
+                <div className="mt-6 pt-6 border-t border-gray-700 text-center">
+                  <h3 className="font-semibold text-lg text-white">
+                    {testimonial.name}
+                  </h3>
+                  <p className="text-sm text-blue-300">{testimonial.role}</p>
+                </div>
               </CardContent>
             </Card>
           ))}

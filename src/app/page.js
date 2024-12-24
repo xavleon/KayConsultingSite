@@ -6,10 +6,6 @@ import { Testimonials } from "@/components/testimonials";
 import { FAQ } from "@/components/faq";
 import { ContactSection } from "@/components/contact-section";
 
-export const metadata = {
-  title: "Home",
-};
-
 export default function Home() {
   return (
     <div className="flex flex-col min-h-screen">

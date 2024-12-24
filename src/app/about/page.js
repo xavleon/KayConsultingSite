@@ -1,7 +1,6 @@
 import { Hero } from "@/components/about/hero";
 import { Content } from "@/components/about/content";
 import { Services } from "@/components/about/services";
-
 export const metadata = {
   title: "About Us",
 };

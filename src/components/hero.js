@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
+import { ArrowRight, BookOpen, Home, Settings } from "lucide-react";
 
 export function Hero() {
   return (
@@ -18,21 +19,40 @@ export function Hero() {
       <div className="mx-auto max-w-7xl px-6 py-24 sm:py-32 lg:flex lg:items-center lg:gap-x-10 lg:px-8 lg:py-40">
         <div className="mx-auto max-w-2xl lg:mx-0 lg:flex-auto">
           <h1 className="mt-10 max-w-lg text-4xl font-bold tracking-tight text-white sm:text-6xl">
-            Professional Bookkeeping, Real Estate, <br /> & Business Automation
-            Solutions
+            Your All-in-One Expert for Business Success
           </h1>
-          <p className="mt-6 text-lg leading-8 text-gray-300">
-            Expert bookkeeping, real estate, and business consultation services
-            tailored for individuals, entrepreneurs, and small businesses. Let
-            us handle your finances and property needs while you focus on
-            growth.
+          <div className="mt-8 space-y-4">
+            <div className="flex items-center gap-3 text-blue-400">
+              <BookOpen className="h-6 w-6" />
+              <span className="text-xl font-semibold">
+                Professional Bookkeeping
+              </span>
+            </div>
+            <div className="flex items-center gap-3 text-blue-400">
+              <Home className="h-6 w-6" />
+              <span className="text-xl font-semibold">
+                Real Estate Services
+              </span>
+            </div>
+            <div className="flex items-center gap-3 text-blue-400">
+              <Settings className="h-6 w-6" />
+              <span className="text-xl font-semibold">Business Automation</span>
+            </div>
+          </div>
+          <p className="mt-8 text-lg leading-8 text-gray-300">
+            I'm Karla Leon, your dedicated professional combining expert
+            bookkeeping, strategic real estate services, and efficient business
+            automation. My integrated approach is tailored for individuals,
+            entrepreneurs, and small businesses looking to thrive in today's
+            market.
           </p>
           <div className="mt-10 flex items-center gap-x-6">
             <Button
               size="lg"
-              className="bg-blue-600 hover:bg-blue-700 text-white"
+              className="bg-blue-600 hover:bg-blue-700 text-white group"
             >
               Book a Consultation
+              <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
             </Button>
             <Button
               variant="outline"
@@ -46,17 +66,25 @@ export function Hero() {
         <div className="mt-16 sm:mt-24 lg:mt-0 lg:flex-shrink-0 lg:flex-grow">
           <div className="relative w-full max-w-xl mx-auto">
             <Image
-              src="/Kay-bg_3.jpg"
-              alt="Karla Leon - Your Professional Bookkeeper"
+              src="/Kay-bg_4.jpg"
+              alt="Karla Leon - Professional Bookkeeper and Real Estate Agent"
               width={500}
               height={600}
               className="rounded-2xl shadow-xl ring-1 ring-gray-400/10 object-cover"
+              sizes="(min-width: 1024px) 50vw, 100vw"
               priority
             />
             <div className="absolute -bottom-8 -left-8 bg-white p-6 rounded-xl shadow-lg">
               <p className="text-2xl font-semibold text-gray-900">Karla Leon</p>
-              <p className="text-sm text-gray-500">Certified Bookkeeper</p>
-              <p className="text-sm text-gray-500">Real Estate Agent</p>
+              <div className="space-y-1 mt-1">
+                <p className="text-sm text-gray-600">Certified Bookkeeper</p>
+                <p className="text-sm text-gray-600">
+                  Licensed Real Estate Agent
+                </p>
+                <p className="text-sm text-gray-600">
+                  Business Automation Expert
+                </p>
+              </div>
             </div>
           </div>
         </div>
