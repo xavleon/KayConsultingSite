@@ -1,3 +1,7 @@
+![image](https://github.com/user-attachments/assets/64ce764f-ee01-4506-8f56-aed586a1df87)
+
+
+
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
@@ -28,8 +32,6 @@ To learn more about Next.js, take a look at the following resources:
 - [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
 You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-![image](https://github.com/user-attachments/assets/64ce764f-ee01-4506-8f56-aed586a1df87)
 
 
 ## Deploy on Vercel
