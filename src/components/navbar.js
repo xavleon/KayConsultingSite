@@ -10,7 +10,8 @@ const navigation = [
   { name: "About", href: "/about" },
   { name: "Services", href: "/services" },
   { name: "Testimonials", href: "/testimonials" },
-  { name: "FAQs", href: "/faqs" },
+  { name: "Mortgage Calculator", href: "/mortgage-calculator" },
+  //   { name: "FAQs", href: "/faqs" },
   // { name: "Contact", href: "#contact", isScroll: true }, is for onscroll contact same screen
   { name: "Contact", href: "/contact" },
 ];

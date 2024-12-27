@@ -1,10 +1,7 @@
+"use client";
 import { ContactHero } from "@/components/contact/hero";
 import { ContactForm } from "@/components/contact/contact-form";
 import { ContactInfo } from "@/components/contact/contact-info";
-
-export const metadata = {
-  title: "Contact Us",
-};
 
 export default function ContactPage() {
   return (
