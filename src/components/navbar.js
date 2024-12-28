@@ -63,7 +63,7 @@ export function Navbar() {
               className="-m-1.5 p-1.5 text-2xl font-bold text-blue-600"
             >
               <span className="flex flex-col">
-                <span>Karla Leon</span>
+                <span>Kay Services</span>
                 <span className="text-sm font-medium text-gray-600">
                   Bookkeeping • Real Estate • Business Automation
                 </span>
@@ -130,7 +130,7 @@ export function Navbar() {
               onClick={() => toggleMobileMenu(false)}
             >
               <span className="flex flex-col">
-                <span>Karla Leon</span>
+                <span>Kay Services</span>
                 <span className="text-sm font-medium text-gray-600">
                   Bookkeeping • Real Estate • Business Automation
                 </span>

@@ -29,10 +29,21 @@ export function MortgageCalculator() {
   // Fetch current rates
   useEffect(() => {
     const fetchRates = async () => {
+      setIsLoadingRates(true);
       try {
-        const response = await fetch("/api/mortgage-rates");
+        const response = await fetch(
+          "https://api.api-ninjas.com/v1/mortgagerate",
+          {
+            headers: {
+              "X-Api-Key": process.env.NEXT_PUBLIC_API_NINJAS_KEY,
+            },
+          }
+        );
+        if (!response.ok) {
+          throw new Error("Failed to fetch rates");
+        }
         const data = await response.json();
-        setCurrentRates(data.rates.default.samples[0]);
+        setCurrentRates(data[0]);
         setIsLoadingRates(false);
       } catch (error) {
         console.error("Error fetching rates:", error);
@@ -132,7 +143,7 @@ export function MortgageCalculator() {
   };
 
   const inputStyles =
-    "w-full bg-white border border-gray-300 text-gray-900 placeholder-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 transition-all";
+    "w-full bg-white border border-gray-300 text-gray-900 placeholder-gray-500 rounded-lg focus:ring-2 focus:ring-blue-500 transition-all";
   const labelStyles = "text-gray-700 font-medium mb-1 block";
 
   return (
@@ -186,22 +197,23 @@ export function MortgageCalculator() {
           ) : currentRates ? (
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <p className="text-sm text-gray-600">Interest Rate</p>
+                <p className="text-sm text-gray-600">30-Year Fixed</p>
                 <p className="text-xl font-semibold text-gray-900">
-                  {formatPercent(currentRates.rate)}
+                  {formatPercent(currentRates.data.frm_30)}
                 </p>
               </div>
               <div>
-                <p className="text-sm text-gray-600">APR</p>
+                <p className="text-sm text-gray-600">15-Year Fixed</p>
                 <p className="text-xl font-semibold text-gray-900">
-                  {formatPercent(currentRates.apr)}
+                  {formatPercent(currentRates.data.frm_15)}
                 </p>
               </div>
               <div className="col-span-2">
                 <p className="text-xs text-gray-500">
-                  Rates shown are for a 30-year fixed conventional loan with
-                  excellent credit. Updated{" "}
-                  {new Date(currentRates.time).toLocaleDateString()}
+                  Rates are for the week of{" "}
+                  {new Date(currentRates.data.week).toLocaleDateString()}.
+                  Actual rates may vary based on credit score, loan amount, and
+                  other factors.
                 </p>
               </div>
             </div>
