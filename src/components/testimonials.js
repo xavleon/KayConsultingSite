@@ -3,19 +3,19 @@ import { QuoteIcon } from "lucide-react";
 
 const testimonials = [
   {
-    name: "Alice Johnson",
+    name: "Maria Rodriguez",
     role: "Small Business Owner",
     content:
       "Kay Bookkeeping has been instrumental in helping me manage my finances. Their attention to detail and professional service is unmatched.",
   },
   {
-    name: "Bob Smith",
+    name: "David Nguyen",
     role: "Freelance Designer",
     content:
       "As a freelancer, keeping track of my finances was always a challenge. Thanks to Kay Bookkeeping, I can focus on my work knowing my books are in order.",
   },
   {
-    name: "Carol Davis",
+    name: "Aisha Patel",
     role: "Startup Founder",
     content:
       "The team at Kay Bookkeeping has been a crucial partner in our startup's growth. Their expertise has helped us make informed financial decisions.",
@@ -44,6 +44,8 @@ export function Testimonials() {
   return (
     <section className="py-24 bg-gray-900">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Section Header */}
+
         <div className="text-center mb-16">
           <h2 className="text-3xl font-bold tracking-tight sm:text-4xl mb-4 text-white">
             What Our Clients Say
@@ -54,23 +56,31 @@ export function Testimonials() {
           </p>
         </div>
 
+        {/* Testimonials Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
           {testimonials.map((testimonial, index) => (
             <Card
               key={index}
               className="bg-gray-800 shadow-lg border border-gray-700 flex flex-col"
             >
+              <div className="mt-4 text-center">
+                <QuoteIcon className="w-8 h-8 text-blue-400 mx-auto" />
+              </div>
               <CardContent className="p-6 flex flex-col h-full">
-                <QuoteIcon className="w-8 h-8 text-blue-400 mb-4 mx-auto" />
+                {/* Testimonial Content */}
                 <p className="text-gray-300 text-center flex-grow">
                   &ldquo;{testimonial.content}&rdquo;
                 </p>
-                <div className="mt-6 pt-6 border-t border-gray-700 text-center">
+
+                {/* Name and Role at the Bottom */}
+                <div className=" border-t border-gray-700 pt-6 text-center">
                   <h3 className="font-semibold text-lg text-white">
                     {testimonial.name}
                   </h3>
                   <p className="text-sm text-blue-300">{testimonial.role}</p>
                 </div>
+
+                {/* Icon at the Very Bottom */}
               </CardContent>
             </Card>
           ))}

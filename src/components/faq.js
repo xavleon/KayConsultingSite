@@ -4,29 +4,35 @@ import { Plus, Minus } from "lucide-react";
 
 const faqs = [
   {
-    question: "What services do you offer?",
+    question: "What is business automation?",
     answer:
-      "We offer a wide range of bookkeeping services including invoicing, monthly bill-paying, financial statement preparation, tax preparation, payroll management, and QuickBooks training.",
+      "Business automation is the use of technology to automate repetitive tasks, such as invoicing, payroll, and expense tracking. It saves time, reduces errors, and allows you to focus on growing your business.",
   },
   {
-    question: "How often will you update my books?",
+    question: "What are the benefits of business automation?",
     answer:
-      "We typically update books on a monthly basis, but we can accommodate more frequent updates if needed. The frequency can be tailored to your specific business needs.",
+      "Business automation increases efficiency, minimizes human errors, and improves accuracy in financial tracking. It also helps you scale operations, save time, and reduce operational costs.",
   },
   {
-    question: "Do you work with small businesses?",
+    question: "What is bookkeeping?",
     answer:
-      "Yes, we specialize in working with small businesses, entrepreneurs, and individuals. Our services are scalable to meet the needs of businesses at various stages of growth.",
+      "Bookkeeping is the process of recording and managing financial transactions for a business or individual. It includes tasks like tracking income and expenses, reconciling accounts, and preparing financial statements.",
   },
   {
-    question: "What accounting software do you use?",
+    question: "I only have a few clients. Do I need a bookkeeper?",
     answer:
-      "We primarily use QuickBooks, which is the industry standard. However, we're familiar with other accounting software and can adapt to your preferred system if needed.",
+      "Yes, even with a small number of clients, I can ensure that your financial records are accurate and organized. This makes tax preparation easier and helps you make informed decisions about your finances.",
   },
   {
-    question: "How do you ensure the security of my financial information?",
+    question:
+      "Can I still get approved for a loan even if I have a low credit score?",
     answer:
-      "We take data security very seriously. We use encrypted, cloud-based systems for data storage and transfer. All our staff are bound by strict confidentiality agreements.",
+      "Yes, it’s possible to get approved for a loan with a low credit score. I can help you organize your financial records to demonstrate your ability to repay the loan, which strengthens your application.",
+  },
+  {
+    question: "When is the best time of year to sell my home?",
+    answer:
+      "The best time to sell your home typically depends on your local real estate market. However, reasearch shows that spring and early summer are often considered ideal due to higher demand and better weather for viewings. I can provide insights specific to your area.",
   },
 ];
 
@@ -61,7 +67,7 @@ export function FAQ() {
             Frequently Asked Questions
           </h2>
           <p className="text-lg text-gray-700 mb-6">
-            Find answers to common questions about our services
+            Find answers to common questions about my services
           </p>
         </div>
 

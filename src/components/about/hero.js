@@ -1,7 +1,12 @@
+"use client";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
+import { User, Briefcase, Heart, ArrowRight } from "lucide-react";
+import { useRouter } from "next/navigation";
 
 export function Hero() {
+  const router = useRouter();
+
   return (
     <section className="relative py-24 bg-white overflow-hidden">
       <div className="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80">
@@ -21,9 +26,11 @@ export function Hero() {
               About Karla Leon
             </h1>
             <p className="text-lg leading-8 text-gray-600 mb-8">
-              With over 20 years of experience, I provide professional
-              bookkeeping services and real estate expertise to individuals,
-              entrepreneurs, and small businesses in Queens, NY.
+              I'm Karla Leon, a certified bookkeeper, licensed real estate
+              agent, and business consultant with over 20 years of experience in
+              the accounting industry. Born in Ecuador and raised in Queens, NY,
+              I bring a deep understanding of diverse cultural and business
+              landscapes.
             </p>
             <div className="flex flex-wrap gap-4 justify-center lg:justify-start">
               <div className="bg-blue-50 px-6 py-4 rounded-lg">
@@ -52,44 +59,62 @@ export function Hero() {
 
         <div className="grid md:grid-cols-3 gap-8 mt-16">
           <div className="bg-blue-50 p-6 rounded-lg">
-            <h2 className="text-2xl font-bold text-gray-900 mb-4">Who I am?</h2>
+            <div className="flex items-center mb-4">
+              <User className="w-6 h-6 text-blue-600 mr-2" />
+              <h2 className="text-2xl font-bold text-gray-900">
+                Professional Background
+              </h2>
+            </div>
             <p className="text-gray-600">
-              I'm Karla Leon, a certified bookkeeper and licensed real estate
-              agent with a passion for helping individuals and businesses
-              achieve their financial goals. My unique blend of expertise allows
-              me to provide comprehensive services that go beyond traditional
-              bookkeeping.
+              My career began with a passion for numbers and helping people.
+              After earning my degree from the Keller Graduate School of
+              Business, I honed my skills working with individuals,
+              entrepreneurs, and small businesses. I've had the privilege of
+              collaborating with one of Long Island's leading firms, The Sanders
+              Firm, where I served as both an accountant and consultant.
             </p>
           </div>
           <div className="bg-blue-50 p-6 rounded-lg">
-            <h2 className="text-2xl font-bold text-gray-900 mb-4">
-              Why I do this?
-            </h2>
+            <div className="flex items-center mb-4">
+              <Briefcase className="w-6 h-6 text-blue-600 mr-2" />
+              <h2 className="text-2xl font-bold text-gray-900">
+                What Sets Me Apart
+              </h2>
+            </div>
             <p className="text-gray-600">
-              My journey began with a desire to empower others through financial
-              literacy and smart real estate decisions. I believe that accurate
-              bookkeeping and strategic property investments are key to
-              long-term success, and I'm committed to guiding my clients towards
-              financial stability and growth.
+              My comprehensive expertise spans bookkeeping, real estate, and
+              business automation, allowing me to provide tailored solutions. I
+              pride myself on delivering personalized advice that aligns with
+              each client's unique goals. My Ecuadorian roots and Queens
+              upbringing give me a unique perspective, blending global
+              understanding with a deep commitment to my local community.
             </p>
           </div>
           <div className="bg-blue-50 p-6 rounded-lg">
-            <h2 className="text-2xl font-bold text-gray-900 mb-4">
-              My Reputation
-            </h2>
+            <div className="flex items-center mb-4">
+              <Heart className="w-6 h-6 text-blue-600 mr-2" />
+              <h2 className="text-2xl font-bold text-gray-900">
+                Volunteer Work
+              </h2>
+            </div>
             <p className="text-gray-600">
-              Over the years, I've built a reputation for reliability, accuracy,
-              and personalized service. My clients trust me not just for my
-              technical skills, but for my ability to explain complex financial
-              concepts in simple terms and provide tailored advice that aligns
-              with their unique goals.
+              Community involvement is a cornerstone of my personal and
+              professional life. For years, I've volunteered at Our Lady of
+              Fatima Church in Jackson Heights, offering my expertise to support
+              local initiatives and help others achieve financial literacy.
+              Giving back to the community that shaped me is both an honor and a
+              joy.
             </p>
           </div>
         </div>
 
         <div className="mt-12 text-center">
-          <Button className="bg-blue-600 hover:bg-blue-700 text-white text-lg px-8 py-3">
+          <Button
+            className="bg-blue-600 hover:bg-blue-700 text-white text-lg px-8 py-3 group"
+            onClick={() => router.push("/contact")}
+          >
             Book a Consultation
+            <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
           </Button>
         </div>
       </div>

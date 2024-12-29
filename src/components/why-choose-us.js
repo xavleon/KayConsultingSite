@@ -2,21 +2,21 @@ import { Shield, Target, Clock } from "lucide-react";
 
 const features = [
   {
-    name: "Integrity",
-    description:
-      "We maintain the highest standards of professional integrity in all our dealings.",
-    icon: Shield,
-  },
-  {
     name: "Attention to Detail",
     description:
-      "Our meticulous approach ensures accuracy in every aspect of your bookkeeping.",
+      "I take a meticulous approach to ensure every financial detail is managed flawlessly, giving you peace of mind.",
     icon: Target,
+  },
+  {
+    name: "Integrity",
+    description:
+      "I uphold the highest ethical standards, ensuring trust and transparency in all my professional interactions.",
+    icon: Shield,
   },
   {
     name: "Confidentiality",
     description:
-      "Your financial information is always kept secure and confidential.",
+      "I prioritize safeguarding your financial data with industry-leading security measures to keep it private and secure.",
     icon: Clock,
   },
 ];
@@ -27,7 +27,7 @@ export function WhyChooseUs() {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-2xl text-center">
           <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl mb-4">
-            Why Choose Us?
+            Why Choose Kay?
           </h2>
           <p className="text-lg text-gray-300 mb-16">
             With over 20 years of experience in professional bookkeeping, we are

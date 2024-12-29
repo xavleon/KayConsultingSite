@@ -11,13 +11,15 @@ import {
   BookOpen,
   Home,
   Search,
+  Cog,
   HandshakeIcon as HandShake,
   BarChartIcon as ChartBar,
 } from "lucide-react";
 
 const serviceMenu = [
   {
-    title: "Bookkeeping Services",
+    title: "Bookkeeping",
+    icon: BookOpen,
     items: [
       "Monthly financial statements (P&L, balance sheet)",
       "Accounts payable and receivable management",
@@ -28,7 +30,8 @@ const serviceMenu = [
     ],
   },
   {
-    title: "Real Estate Services",
+    title: "Real Estate",
+    icon: Home,
     items: [
       "Property listing and marketing",
       "Buyer representation",
@@ -41,14 +44,15 @@ const serviceMenu = [
     ],
   },
   {
-    title: "Advisory Services",
+    title: "Business Automation",
+    icon: Cog,
     items: [
-      "Financial analysis and reporting",
-      "Budget creation and monitoring",
-      "Cash flow forecasting",
-      "Business process improvement",
-      "Real estate investment strategies",
-      "Property management consultation",
+      "Workflow analysis and optimization",
+      "Software integration and customization",
+      "Process automation implementation",
+      "Employee training on automated systems",
+      "Ongoing support and system maintenance",
+      "Performance monitoring and reporting",
     ],
   },
 ];
@@ -97,25 +101,38 @@ export function Services() {
     <section className="py-24" style={{ backgroundColor: "#121827" }}>
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Services Menu Section */}
-        <div className="max-w-3xl mx-auto mb-20">
-          <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl mb-6 text-center">
+        <div className="max-w-7xl mx-auto mb-20">
+          <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl mb-2 text-center">
             A Menu of My Services
           </h2>
-          <div className="grid gap-8">
+          <p className="text-xl text-blue-400 text-center mb-12">
+            Bookkeeping • Real Estate • Business Automation
+          </p>
+          <div className="grid md:grid-cols-3 gap-8">
             {serviceMenu.map((category) => (
-              <div key={category.title} className="bg-blue-50 rounded-lg p-6">
-                <h3 className="text-xl font-semibold text-gray-900 mb-4">
-                  {category.title}
-                </h3>
-                <ul className="grid gap-3">
-                  {category.items.map((item) => (
-                    <li key={item} className="flex items-center text-gray-600">
-                      <div className="w-1.5 h-1.5 rounded-full bg-blue-600 mr-3" />
-                      {item}
-                    </li>
-                  ))}
-                </ul>
-              </div>
+              <Card
+                key={category.title}
+                className="bg-gray-800 border-gray-700 hover:bg-gray-700 transition-colors duration-300"
+              >
+                <CardContent className="p-6">
+                  <div className="flex items-center mb-4">
+                    <div className="bg-blue-100 p-3 rounded-full mr-4">
+                      <category.icon className="h-6 w-6 text-blue-600" />
+                    </div>
+                    <h3 className="text-xl font-semibold text-white">
+                      {category.title}
+                    </h3>
+                  </div>
+                  <ul className="space-y-2">
+                    {category.items.map((item) => (
+                      <li key={item} className="flex items-start text-gray-300">
+                        <div className="w-1.5 h-1.5 rounded-full bg-blue-400 mr-3 mt-2" />
+                        <span>{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </CardContent>
+              </Card>
             ))}
           </div>
         </div>

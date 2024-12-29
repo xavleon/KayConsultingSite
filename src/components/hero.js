@@ -1,8 +1,12 @@
+"use client";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import { ArrowRight, BookOpen, Home, Settings } from "lucide-react";
+import { useRouter } from "next/navigation";
 
 export function Hero() {
+  const router = useRouter();
+
   return (
     <div className="relative isolate overflow-hidden bg-gray-900">
       {/* Background gradient */}
@@ -23,33 +27,34 @@ export function Hero() {
           </h1>
           <div className="mt-8 space-y-4">
             <div className="flex items-center gap-3 text-blue-400">
-              <BookOpen className="h-6 w-6" />
-              <span className="text-xl font-semibold">
-                Professional Bookkeeping
-              </span>
-            </div>
-            <div className="flex items-center gap-3 text-blue-400">
               <Home className="h-6 w-6" />
               <span className="text-xl font-semibold">
                 Real Estate Services
               </span>
             </div>
             <div className="flex items-center gap-3 text-blue-400">
+              <BookOpen className="h-6 w-6" />
+              <span className="text-xl font-semibold">
+                Professional Bookkeeping
+              </span>
+            </div>
+
+            <div className="flex items-center gap-3 text-blue-400">
               <Settings className="h-6 w-6" />
               <span className="text-xl font-semibold">Business Automation</span>
             </div>
           </div>
           <p className="mt-8 text-lg leading-8 text-gray-300">
-            I'm Karla Leon, your dedicated professional combining expert
-            bookkeeping, strategic real estate services, and efficient business
-            automation. My integrated approach is tailored for individuals,
-            entrepreneurs, and small businesses looking to thrive in today's
-            market.
+            I'm Karla Leon, your trusted partner in expert bookkeeping,
+            strategic real estate services, and seamless business automation. I
+            empower individuals, entrepreneurs, and small businesses to thrive
+            with customized solutions designed for success.
           </p>
           <div className="mt-10 flex items-center gap-x-6">
             <Button
               size="lg"
               className="bg-blue-600 hover:bg-blue-700 text-white group"
+              onClick={() => router.push("/contact")}
             >
               Book a Consultation
               <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
@@ -58,6 +63,7 @@ export function Hero() {
               variant="outline"
               size="lg"
               className="border-blue-400 text-blue-400 hover:bg-blue-950"
+              onClick={() => router.push("/services")}
             >
               Learn More
             </Button>
@@ -77,10 +83,11 @@ export function Hero() {
             <div className="absolute -bottom-8 -left-8 bg-white p-6 rounded-xl shadow-lg">
               <p className="text-2xl font-semibold text-gray-900">Karla Leon</p>
               <div className="space-y-1 mt-1">
-                <p className="text-sm text-gray-600">Certified Bookkeeper</p>
                 <p className="text-sm text-gray-600">
                   Licensed Real Estate Agent
                 </p>
+                <p className="text-sm text-gray-600">Certified Bookkeeper</p>
+
                 <p className="text-sm text-gray-600">
                   Business Automation Expert
                 </p>

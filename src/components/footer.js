@@ -2,10 +2,14 @@ import Link from "next/link";
 
 export function Footer() {
   return (
-    <footer className="bg-gray-900 text-white">
+    <footer className="bg-gray-900 text-white relative">
+      {/* Vertical Divider */}
+      <div className="absolute top-0 left-0 w-full h-1 bg-gray-600"></div>
+
       <div className="container mx-auto py-12 px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
-          <div>
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-y-8 gap-x-16">
+          {/* Column 1: Business Information */}
+          <div className="text-left">
             <h3 className="text-xl font-semibold mb-4 text-blue-400">
               Kay Leon Business Solutions
             </h3>
@@ -15,78 +19,105 @@ export function Footer() {
               businesses.
             </p>
           </div>
-          <div>
+
+          {/* Column 2: Quick Links */}
+          <div className="text-left">
             <h3 className="text-xl font-semibold mb-4 text-blue-400">
               Quick Links
             </h3>
-            <ul className="space-y-3">
-              <li>
-                <Link
-                  href="/"
-                  className="text-gray-300 hover:text-blue-400 transition-colors"
-                >
-                  Home
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/about"
-                  className="text-gray-300 hover:text-blue-400 transition-colors"
-                >
-                  About
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/services"
-                  className="text-gray-300 hover:text-blue-400 transition-colors"
-                >
-                  Services
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/testimonials"
-                  className="text-gray-300 hover:text-blue-400 transition-colors"
-                >
-                  Testimonials
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/faq"
-                  className="text-gray-300 hover:text-blue-400 transition-colors"
-                >
-                  FAQs
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/contact"
-                  className="text-gray-300 hover:text-blue-400 transition-colors"
-                >
-                  Contact
-                </Link>
-              </li>
-            </ul>
+            <nav>
+              <ul className="space-y-3">
+                <li>
+                  <Link
+                    href="/"
+                    className="text-gray-300 hover:text-blue-400 transition-colors"
+                  >
+                    Home
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/about"
+                    className="text-gray-300 hover:text-blue-400 transition-colors"
+                  >
+                    About
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/services"
+                    className="text-gray-300 hover:text-blue-400 transition-colors"
+                  >
+                    Services
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/testimonials"
+                    className="text-gray-300 hover:text-blue-400 transition-colors"
+                  >
+                    Testimonials
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/mortgage-calculator"
+                    className="text-gray-300 hover:text-blue-400 transition-colors"
+                  >
+                    Mortgage Calculator
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/contact"
+                    className="text-gray-300 hover:text-blue-400 transition-colors"
+                  >
+                    Contact
+                  </Link>
+                </li>
+              </ul>
+            </nav>
           </div>
-          <div>
+
+          {/* Column 3: Contact Information */}
+          <div className="text-left">
             <h3 className="text-xl font-semibold mb-4 text-blue-400">
               Contact Us
             </h3>
             <div className="space-y-2">
-              <p className="text-gray-300">Long Island, NY</p>
-              <p className="text-gray-300">Phone: (516) 123-4567</p>
-              <p className="text-gray-300">Email: info@keybykay.com</p>
+              <p className="text-gray-300">Mineola, NY</p>
+              <p className="text-gray-300">
+                Phone:{" "}
+                <a
+                  href="tel:5167672870"
+                  className="text-blue-400 hover:text-blue-300 transition-colors"
+                >
+                  (516) 767-2870
+                </a>
+              </p>
+              <p className="text-gray-300">
+                Email:{" "}
+                <a
+                  href="mailto:info@keybykay.com"
+                  className="text-blue-400 hover:text-blue-300 transition-colors "
+                >
+                  info@keybykay.com
+                </a>
+              </p>
             </div>
           </div>
         </div>
-        <div className="mt-12 border-t border-gray-800 pt-8 text-center space-y-2">
+
+        {/* Divider */}
+        <div className="border-t border-gray-800 my-8"></div>
+
+        {/* Footer Bottom */}
+        <div className="text-center pt-8 pb-16 md:pb-8">
           <p className="text-gray-400">
             &copy; {new Date().getFullYear()} Kay Leon Business Solutions. All
             rights reserved.
           </p>
-          <p className="text-gray-500 text-sm">
+          <p className="text-gray-500 text-sm mt-2">
             Website developed by{" "}
             <Link
               href="https://excilify.com"
