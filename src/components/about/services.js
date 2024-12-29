@@ -139,9 +139,10 @@ export function Services() {
 
         {/* Reasons to Choose Kay Section */}
         <div className="max-w-7xl mx-auto">
-          <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl mb-12 text-center">
+          <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl mb-4 text-center">
             Reasons to Choose Kay's Services
           </h2>
+          <div className="w-1/4 h-0.5 bg-gray-400 mx-auto mb-12"></div>
           <div className="grid md:grid-cols-3 gap-8">
             {clientTypes.map((type) => (
               <Card
