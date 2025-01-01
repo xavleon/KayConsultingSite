@@ -9,11 +9,10 @@ const navigation = [
   { name: "Home", href: "/" },
   { name: "About", href: "/about" },
   { name: "Services", href: "/services" },
-  { name: "Testimonials", href: "/testimonials" },
-  { name: "Mortgage Calculator", href: "/mortgage-calculator" },
-  //   { name: "FAQs", href: "/faqs" },
-  // { name: "Contact", href: "#contact", isScroll: true }, is for onscroll contact same screen
   { name: "Contact", href: "/contact" },
+  { name: "Mortgage Calculator", href: "/mortgage-calculator" },
+
+  { name: "Document Submission", href: "/document-submission" },
 ];
 
 export function Navbar() {
@@ -26,22 +25,7 @@ export function Navbar() {
       setMobileMenuOpen((prev) => !prev);
     }
   }, []);
-  //The bottom up to 40 is for onscroll contact same screen
 
-  //   const handleNavClick = (e, item, isMobile = false) => {
-  //     if (item.isScroll) {
-  //       e.preventDefault();
-  //       const element = document.getElementById("contact");
-  //       if (element) {
-  //         element.scrollIntoView({ behavior: "smooth" });
-  //       }
-  //     }
-  //     if (isMobile) {
-  //       setMobileMenuOpen(false);
-  //     }
-  //   };
-
-  // Prevent scrolling when mobile menu is open
   useEffect(() => {
     if (mobileMenuOpen) {
       document.body.style.overflow = "hidden";
@@ -56,7 +40,7 @@ export function Navbar() {
   return (
     <>
       <header className="fixed top-0 left-0 right-0 bg-white/80 backdrop-blur-md border-b z-40">
-        <nav className="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8">
+        <nav className="mx-auto flex max-w-7xl items-center justify-between py-4 px-6 lg:px-12">
           <div className="flex lg:flex-1">
             <Link
               href="/"
@@ -79,21 +63,19 @@ export function Navbar() {
               <Menu className="h-6 w-6" />
             </button>
           </div>
-          <div className="hidden lg:flex lg:gap-x-12">
+          <div className="hidden lg:flex lg:gap-x-8">
             {navigation.map((item) => (
               <Link
                 key={item.name}
                 href={item.href}
                 className="text-sm font-semibold leading-6 text-gray-700 hover:text-blue-600 transition-colors"
-                // onClick={(e) => handleNavClick(e, item)} // for onscroll contact same screen
               >
                 {item.name}
               </Link>
             ))}
           </div>
           <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-            <Button className="bg-blue-600 hover:bg-blue-700 text-white">
-              {/* Book a Consultation */}
+            <Button className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2">
               <Link href="/contact">Book a Consultation</Link>
             </Button>
           </div>
@@ -108,14 +90,11 @@ export function Navbar() {
             : "opacity-0 pointer-events-none"
         }`}
       >
-        {/* Backdrop */}
         <div
           className="fixed inset-0 bg-black/25"
           aria-hidden="true"
           onClick={() => toggleMobileMenu(false)}
         />
-
-        {/* Mobile menu panel */}
         <div
           className={`fixed inset-x-0 top-0 w-full bg-white overflow-hidden transition-all duration-300 ease-in-out`}
           style={{
@@ -152,7 +131,6 @@ export function Navbar() {
                   key={item.name}
                   href={item.href}
                   className="block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
-                  //   onClick={(e) => handleNavClick(e, item, true)} // for onscroll contact same screen
                   onClick={() => toggleMobileMenu(false)}
                 >
                   {item.name}
@@ -160,9 +138,8 @@ export function Navbar() {
               ))}
             </div>
             <div className="mt-6 pt-6 border-t">
-              {/* <Button className="w-full bg-blue-600 hover:bg-blue-700 text-white"> */}
               <Button
-                className="w-full bg-blue-600 hover:bg-blue-700 text-white text-base font-semibold"
+                className="w-full bg-blue-600 hover:bg-blue-700 text-white text-base font-semibold py-3"
                 onClick={() => toggleMobileMenu(false)}
               >
                 <Link href="/contact">Book a Consultation</Link>

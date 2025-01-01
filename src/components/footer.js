@@ -7,13 +7,13 @@ export function Footer() {
       <div className="absolute top-0 left-0 w-full h-1 bg-gray-600"></div>
 
       <div className="container mx-auto py-12 px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-y-8 gap-x-16">
+        <div className="grid grid-cols-1 lg:grid-cols-7 gap-y-8 gap-x-16">
           {/* Column 1: Business Information */}
-          <div className="text-left">
+          <div className="text-left lg:col-span-3">
             <h3 className="text-xl font-semibold mb-4 text-blue-400">
               Kay Leon Business Solutions
             </h3>
-            <p className="text-gray-300">
+            <p className="text-gray-300 w-2/3">
               Professional bookkeeping, real estate services, and business
               automation solutions for individuals, entrepreneurs, and small
               businesses.
@@ -21,7 +21,7 @@ export function Footer() {
           </div>
 
           {/* Column 2: Quick Links */}
-          <div className="text-left">
+          <div className="text-left lg:col-span-2">
             <h3 className="text-xl font-semibold mb-4 text-blue-400">
               Quick Links
             </h3>
@@ -80,7 +80,7 @@ export function Footer() {
           </div>
 
           {/* Column 3: Contact Information */}
-          <div className="text-left">
+          <div className="text-left lg:col-span-2">
             <h3 className="text-xl font-semibold mb-4 text-blue-400">
               Contact Us
             </h3>

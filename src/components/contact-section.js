@@ -162,7 +162,7 @@ export function ContactSection() {
             <div>
               <button
                 type="submit"
-                className="w-full bg-blue-600 hover:bg-blue-700 text-white transition-colors duration-200"
+                className="w-full bg-blue-600 hover:bg-blue-700 text-white transition-colors duration-200 rounded-lg py-3"
                 disabled={loading}
               >
                 {loading ? "Sending..." : "Send Message"}
