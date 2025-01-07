@@ -24,7 +24,7 @@ export function ContactInfo() {
 
         <div className="flex items-center gap-3">
           <Mail className="w-6 h-6 text-blue-400 flex-shrink-0" />
-          <p className="text-white">info@kaybookkeeping.com</p>
+          <p className="text-white">info@keybykay.com</p>
         </div>
         <div className="flex items-start gap-3">
           <Clock className="w-6 h-6 text-blue-400 flex-shrink-0 mt-1" />

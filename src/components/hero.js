@@ -89,7 +89,7 @@ export function Hero() {
                 <p className="text-sm text-gray-600">Certified Bookkeeper</p>
 
                 <p className="text-sm text-gray-600">
-                  Business Automation Expert
+                  Business Automation Specialist
                 </p>
               </div>
             </div>
