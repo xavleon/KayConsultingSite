@@ -28,7 +28,7 @@ export async function POST(req) {
     // Email options
     const mailOptions = {
       from: `"${firstName} ${lastName}" <${process.env.SMTP_USER}>`,
-      to: "mrm.leon93@gmail.com",
+      to: "keleon1212@gmail.com",
       subject: "New Document Submission",
       text: `You have received a document from ${firstName} ${lastName}.`,
       attachments: [

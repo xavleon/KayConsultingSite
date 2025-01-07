@@ -42,7 +42,7 @@ export async function POST(req) {
     // Email options
     const mailOptions = {
       from: `"${name}" <${email}>`, // Sender's email and name
-      to: "mrm.leon93@gmail.com", // Your email address to receive messages
+      to: "keleon1212@gmail.com", // Your email address to receive messages
       subject: "New Contact Form Submission",
       text: `You have a new message from ${name} (${email}, ${
         phone || "No phone number provided"

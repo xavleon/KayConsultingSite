@@ -49,7 +49,7 @@ export function DocumentSubmissionForm() {
       const payload = {
         firstName,
         lastName,
-        email: "mrm.leon93@gmail.com",
+        email: ["mrm.leon93@gmail.com", "jleon11369@gmail.com"],
         message: "Document submission",
         file: {
           name: file.name,
