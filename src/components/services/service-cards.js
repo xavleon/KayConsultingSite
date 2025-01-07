@@ -23,7 +23,8 @@ const services = [
       "Streamline your operations and boost efficiency with our cutting-edge business automation solutions. We help you identify and implement the right tools to save time and reduce costs. Our tailored solutions maximize productivity and ROI.",
     icon: Cog,
     action: "Get a Quote",
-    href: "/contact?service=automation",
+    href: "http://www.metpro.world",
+    external: true, // Flag to denote an external link
   },
   {
     title: "Real Estate Services",
@@ -62,8 +63,21 @@ export function ServiceCards() {
 
               {/* Card Footer */}
               <CardFooter className="mt-auto">
-                <Button className=" w-full bg-blue-600 hover:bg-blue-700 text-white">
-                  <a href={service.href}>{service.action}</a>
+                <Button className="w-full bg-blue-600 hover:bg-blue-700 text-white">
+                  <a
+                    href={service.href}
+                    target={
+                      service.action === "Get a Quote" ? "_blank" : "_self"
+                    }
+                    rel={
+                      service.action === "Get a Quote"
+                        ? "noopener noreferrer"
+                        : undefined
+                    }
+                    className="inline-block w-full h-full text-center"
+                  >
+                    {service.action}
+                  </a>
                 </Button>
               </CardFooter>
             </Card>

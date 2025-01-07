@@ -8,14 +8,20 @@ export function ContactInfo() {
         <div className="flex items-start gap-3">
           <MapPin className="w-6 h-6 text-blue-400 flex-shrink-0 mt-1" />
           <div>
-            <p className="text-white">123 Bookkeeping St.</p>
-            <p className="text-gray-300">Accountant City, AC 12345</p>
+            <p className="text-white">
+              Coverage: Five Boroughs and Long Island <br />
+              Offices in Queens and Mineola
+            </p>
+            {/* <p className="text-gray-300">Long Island, NY </p> */}
           </div>
         </div>
         <div className="flex items-center gap-3">
           <Phone className="w-6 h-6 text-blue-400 flex-shrink-0" />
-          <p className="text-white">(123) 456-7890</p>
+          <a href="tel:9177672870" className="text-white">
+            (917) 767-2870
+          </a>
         </div>
+
         <div className="flex items-center gap-3">
           <Mail className="w-6 h-6 text-blue-400 flex-shrink-0" />
           <p className="text-white">info@kaybookkeeping.com</p>
@@ -23,8 +29,12 @@ export function ContactInfo() {
         <div className="flex items-start gap-3">
           <Clock className="w-6 h-6 text-blue-400 flex-shrink-0 mt-1" />
           <div>
-            <p className="text-white">Monday - Friday: 9am - 5pm</p>
+            <p className="text-white">Monday - Friday: 9am - 9pm</p>
             <p className="text-gray-300">Saturday - Sunday: Closed</p>
+            <p className="text-gray-300">
+              {" "}
+              <br /> **Weekend appointments available upon request**
+            </p>
           </div>
         </div>
       </div>

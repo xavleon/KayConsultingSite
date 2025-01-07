@@ -85,7 +85,7 @@ export function Footer() {
               Contact Us
             </h3>
             <div className="space-y-2">
-              <p className="text-gray-300">Mineola, NY</p>
+              <p className="text-gray-300">Long Island, NY</p>
               <p className="text-gray-300">
                 Phone:{" "}
                 <a
