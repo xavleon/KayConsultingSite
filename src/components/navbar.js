@@ -175,18 +175,28 @@ export function Navbar() {
           }}
         >
           <div className="flex items-center justify-between px-6 py-6 border-b">
-            <Link
-              href="/"
-              className="-m-1.5 p-1.5 text-2xl font-bold text-blue-600"
-              onClick={() => toggleMobileMenu(false)}
-            >
-              <span className="flex flex-col">
-                <span>Kay Leon</span>
-                <span className="text-sm font-medium text-gray-600">
-                  Bookkeeping • Real Estate • Business Automation
+            {/* Logo and Branding */}
+            <div className="flex items-center space-x-4">
+              <img
+                src="/logo3.png" // Replace with the actual path to your logo
+                alt="Kay Services Logo"
+                className="h-14 w-14 rounded-md" // Matches desktop logo
+              />
+              <Link
+                href="/"
+                className="-m-1.5 p-1.5 text-2xl font-bold text-blue-600"
+                onClick={() => toggleMobileMenu(false)} // Close menu when logo is clicked
+              >
+                <span className="flex flex-col">
+                  <span>Kay Services</span>
+                  <span className="text-sm font-medium text-gray-600">
+                    Bookkeeping • Real Estate • Business Automation
+                  </span>
                 </span>
-              </span>
-            </Link>
+              </Link>
+            </div>
+
+            {/* Close Button */}
             <button
               type="button"
               className="-m-2.5 rounded-md p-2.5 text-gray-700"
