@@ -17,8 +17,8 @@ export function ContactInfo() {
         </div>
         <div className="flex items-center gap-3">
           <Phone className="w-6 h-6 text-blue-400 flex-shrink-0" />
-          <a href="tel:9177672870" className="text-white">
-            (917) 767-2870
+          <a href="tel:9179922528" className="text-white">
+            (917) 992-2528
           </a>
         </div>
 

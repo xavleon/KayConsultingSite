@@ -84,13 +84,11 @@ export function Hero() {
               <p className="text-2xl font-semibold text-gray-900">Karla Leon</p>
               <div className="space-y-1 mt-1">
                 <p className="text-sm text-gray-600">
-                  Licensed Real Estate Agent
+                  NYS Licensed Real Estate Agent
                 </p>
                 <p className="text-sm text-gray-600">Certified Bookkeeper</p>
 
-                <p className="text-sm text-gray-600">
-                  Business Automation Specialist
-                </p>
+                <p className="text-sm text-gray-600">NYS Notary Public</p>
               </div>
             </div>
           </div>
