@@ -51,6 +51,20 @@ export function Navbar() {
     };
   }, [mobileMenuOpen]);
 
+  // Close dropdown when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (dropdownOpen && !event.target.closest(".dropdown-container")) {
+        setDropdownOpen(null);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [dropdownOpen]);
+
   const handleDropdownToggle = (name) => {
     setDropdownOpen((prev) => (prev === name ? null : name)); // Toggle dropdown
   };
@@ -102,27 +116,40 @@ export function Navbar() {
           <div className="hidden lg:flex lg:gap-x-6">
             {navigation.map((item) =>
               item.submenu ? (
-                <div key={item.name} className="relative">
+                <div key={item.name} className="relative dropdown-container">
                   <button
-                    className="text-sm font-semibold leading-6 text-gray-700 hover:text-blue-600 transition-colors flex items-center"
+                    className="text-sm font-semibold leading-6 text-gray-700 hover:text-blue-600 transition-colors flex items-center py-2 group"
                     onClick={() => handleDropdownToggle(item.name)}
+                    onMouseEnter={() => setDropdownOpen(item.name)}
                   >
                     {item.name}
-                    <span className="ml-2">
+                    <span className="ml-2 flex items-center">
+                      <span className="w-1 h-1 bg-blue-400 rounded-full mr-1 opacity-60 group-hover:opacity-100 transition-opacity"></span>
                       {dropdownOpen === item.name ? (
-                        <ChevronUp />
+                        <ChevronUp className="h-4 w-4" />
                       ) : (
-                        <ChevronDown />
+                        <ChevronDown className="h-4 w-4" />
                       )}
                     </span>
                   </button>
+                  {/* Invisible bridge to prevent dropdown from closing */}
                   {dropdownOpen === item.name && (
-                    <div className="absolute left-0 mt-2 w-56 bg-white shadow-lg rounded-md z-50">
+                    <div
+                      className="absolute left-0 top-full w-full h-2 bg-transparent"
+                      onMouseEnter={() => setDropdownOpen(item.name)}
+                    />
+                  )}
+                  {dropdownOpen === item.name && (
+                    <div
+                      className="absolute left-0 mt-0 w-64 bg-white shadow-xl rounded-lg border border-gray-200 z-50 py-2"
+                      onMouseEnter={() => setDropdownOpen(item.name)}
+                      onMouseLeave={() => setDropdownOpen(null)}
+                    >
                       {item.submenu.map((subItem) => (
                         <Link
                           key={subItem.name}
                           href={subItem.href}
-                          className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                          className="block px-4 py-3 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-all duration-150 border-b border-gray-100 last:border-b-0"
                           onClick={closeDropdown}
                         >
                           {subItem.name}
@@ -137,7 +164,7 @@ export function Navbar() {
                   href={item.href}
                   target={item.external ? "_blank" : "_self"}
                   rel={item.external ? "noopener noreferrer" : undefined}
-                  className="text-sm font-semibold leading-6 text-gray-700 hover:text-blue-600 transition-colors"
+                  className="text-sm font-semibold leading-6 text-gray-700 hover:text-blue-600 transition-colors py-2"
                 >
                   {item.name}
                 </a>
@@ -213,20 +240,24 @@ export function Navbar() {
                   <div key={item.name}>
                     <button
                       onClick={handleMobileDropdownToggle}
-                      className="flex w-full justify-between items-center text-sm font-semibold leading-6 text-gray-700 hover:text-blue-600 transition-colors"
+                      className="flex w-full justify-between items-center text-sm font-semibold leading-6 text-gray-700 hover:text-blue-600 transition-colors py-3"
                     >
                       {item.name}
                       <span>
-                        {mobileDropdownOpen ? <ChevronUp /> : <ChevronDown />}
+                        {mobileDropdownOpen ? (
+                          <ChevronUp className="h-4 w-4" />
+                        ) : (
+                          <ChevronDown className="h-4 w-4" />
+                        )}
                       </span>
                     </button>
                     {mobileDropdownOpen && (
-                      <div className="mt-2 space-y-2 pl-4">
+                      <div className="mt-2 space-y-1 pl-4 border-l-2 border-blue-100">
                         {item.submenu.map((subItem) => (
                           <Link
                             key={subItem.name}
                             href={subItem.href}
-                            className="block text-sm text-gray-700 hover:text-blue-600"
+                            className="block text-sm text-gray-600 hover:text-blue-600 py-2 px-3 rounded-md hover:bg-blue-50 transition-colors"
                             onClick={() => setMobileMenuOpen(false)}
                           >
                             {subItem.name}
