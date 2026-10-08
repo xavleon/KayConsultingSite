@@ -1,15 +1,16 @@
 export function Hero() {
   return (
-    <section className="bg-[#101827] text-white py-24">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <h1 className="text-4xl md:text-5xl font-bold text-center mb-6">
-          Mortgage Calculator
-        </h1>
-        <p className="text-xl text-center max-w-3xl mx-auto text-gray-300">
-          Plan your home purchase with our easy-to-use mortgage calculator. Get
-          estimated monthly payments and current rates.
-        </p>
-      </div>
-    </section>
+    <header className="max-w-2xl">
+      <p className="text-xs font-semibold uppercase tracking-[0.22em] text-brass">
+        Financial tools
+      </p>
+      <h1 className="mt-3 text-4xl font-semibold tracking-tight text-ink sm:text-5xl">
+        Mortgage calculator
+      </h1>
+      <p className="mt-4 text-lg leading-8 text-stone-600">
+        Estimate principal and interest for a home purchase. Taxes, insurance,
+        and mortgage insurance are not included.
+      </p>
+    </header>
   );
 }

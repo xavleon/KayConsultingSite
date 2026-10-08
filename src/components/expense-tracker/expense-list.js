@@ -1,60 +1,35 @@
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "@/components/ui/table";
-import { Button } from "@/components/ui/button";
 import { Trash2 } from "lucide-react";
+import { formatMoney } from "./savings-recommendation";
 
 export function ExpenseList({ expenses, onDelete }) {
+  if (expenses.length === 0) {
+    return (
+      <p className="rounded-2xl bg-paper px-4 py-8 text-center text-sm text-stone-500">
+        Nothing listed yet. Add rent, groceries, or whatever repeats each month.
+      </p>
+    );
+  }
+
   return (
-    <Table className="mt-4 bg-gray-50 shadow-md border border-gray-200 rounded-lg">
-      <TableHeader className="bg-[#101827] text-white rounded-t-lg">
-        <TableRow>
-          <TableHead className="text-left px-4 py-3">Expense</TableHead>
-          <TableHead className="text-left px-4 py-3">Amount</TableHead>
-          <TableHead className="text-left px-4 py-3 w-[50px]">Action</TableHead>
-        </TableRow>
-      </TableHeader>
-      <TableBody>
-        {expenses.length > 0 ? (
-          expenses.map((expense) => (
-            <TableRow
-              key={expense.id}
-              className="even:bg-gray-100 hover:bg-gray-200 transition-colors"
-            >
-              <TableCell className="px-4 py-3 text-gray-800">
-                {expense.name}
-              </TableCell>
-              <TableCell className="px-4 py-3 text-gray-800">
-                ${parseFloat(expense.amount).toFixed(2)}
-              </TableCell>
-              <TableCell className="px-4 py-3">
-                <Button
-                  variant="ghost"
-                  size="icon"
-                  className="text-red-600 hover:bg-red-50"
-                  onClick={() => onDelete(expense.id)}
-                >
-                  <Trash2 className="h-5 w-5" />
-                </Button>
-              </TableCell>
-            </TableRow>
-          ))
-        ) : (
-          <TableRow>
-            <TableCell
-              colSpan={3}
-              className="px-4 py-3 text-center text-gray-500"
-            >
-              No expenses to display.
-            </TableCell>
-          </TableRow>
-        )}
-      </TableBody>
-    </Table>
+    <ul className="divide-y divide-stone-200">
+      {expenses.map((expense) => (
+        <li key={expense.id} className="flex items-center gap-3 py-3">
+          <span className="min-w-0 flex-1 truncate text-sm text-ink">
+            {expense.name}
+          </span>
+          <span className="text-sm font-medium text-ink">
+            {formatMoney(expense.amount)}
+          </span>
+          <button
+            type="button"
+            onClick={() => onDelete(expense.id)}
+            className="rounded-full p-2 text-stone-400 transition-colors hover:bg-stone-100 hover:text-ink"
+            aria-label={`Remove ${expense.name}`}
+          >
+            <Trash2 className="h-4 w-4" />
+          </button>
+        </li>
+      ))}
+    </ul>
   );
 }

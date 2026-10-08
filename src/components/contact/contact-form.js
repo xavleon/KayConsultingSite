@@ -1,3 +1,5 @@
+"use client";
+
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -56,14 +58,12 @@ export function ContactForm() {
   };
 
   return (
-    <div className="bg-[#121827] text-white rounded-lg shadow-xl w-full max-w-3xl mx-auto p-4">
-      <h2 className="text-2xl font-bold mb-6 pb-2 border-b">
-        Send Me a Message
-      </h2>
-      <form className="space-y-6" onSubmit={handleSubmit}>
+    <div className="rounded-[2rem] border border-stone-200 bg-white p-6 sm:p-8">
+      <h2 className="text-2xl font-semibold text-ink">Send a message</h2>
+      <form className="mt-6 space-y-5" onSubmit={handleSubmit}>
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
           <div className="space-y-2">
-            <label htmlFor="firstName" className="block text-sm">
+            <label htmlFor="firstName" className="block text-sm font-medium text-stone-700">
               First name
             </label>
             <Input
@@ -71,13 +71,13 @@ export function ContactForm() {
               name="firstName"
               type="text"
               required
-              className="w-full bg-white border-0 text-gray-900"
+              className="h-12 w-full rounded-xl border border-stone-200 bg-white px-3 text-ink outline-none focus:ring-2 focus:ring-pine"
               value={formData.firstName}
               onChange={handleInputChange}
             />
           </div>
           <div className="space-y-2">
-            <label htmlFor="lastName" className="block text-sm">
+            <label htmlFor="lastName" className="block text-sm font-medium text-stone-700">
               Last name
             </label>
             <Input
@@ -85,14 +85,14 @@ export function ContactForm() {
               name="lastName"
               type="text"
               required
-              className="w-full bg-white border-0 text-gray-900"
+              className="h-12 w-full rounded-xl border border-stone-200 bg-white px-3 text-ink outline-none focus:ring-2 focus:ring-pine"
               value={formData.lastName}
               onChange={handleInputChange}
             />
           </div>
         </div>
         <div className="space-y-2">
-          <label htmlFor="email" className="block text-sm">
+          <label htmlFor="email" className="block text-sm font-medium text-stone-700">
             Email
           </label>
           <Input
@@ -100,26 +100,26 @@ export function ContactForm() {
             name="email"
             type="email"
             required
-            className="w-full bg-white border-0 text-gray-900"
+            className="h-12 w-full rounded-xl border border-stone-200 bg-white px-3 text-ink outline-none focus:ring-2 focus:ring-pine"
             value={formData.email}
             onChange={handleInputChange}
           />
         </div>
         <div className="space-y-2">
-          <label htmlFor="phone" className="block text-sm">
+          <label htmlFor="phone" className="block text-sm font-medium text-stone-700">
             Phone
           </label>
           <Input
             id="phone"
             name="phone"
             type="tel"
-            className="w-full bg-white border-0 text-gray-900"
+            className="h-12 w-full rounded-xl border border-stone-200 bg-white px-3 text-ink outline-none focus:ring-2 focus:ring-pine"
             value={formData.phone}
             onChange={handleInputChange}
           />
         </div>
         <div className="space-y-2">
-          <label htmlFor="message" className="block text-sm">
+          <label htmlFor="message" className="block text-sm font-medium text-stone-700">
             Message
           </label>
           <Textarea
@@ -127,14 +127,14 @@ export function ContactForm() {
             name="message"
             rows={4}
             required
-            className="w-full bg-white border-0 text-gray-900"
+            className="h-32 w-full rounded-xl border border-stone-200 bg-white p-3 text-ink outline-none focus:ring-2 focus:ring-pine"
             value={formData.message}
             onChange={handleInputChange}
           />
         </div>
         <Button
           type="submit"
-          className="w-full bg-[#2563eb] hover:bg-[#2357c6] text-white transition-colors duration-200"
+          className="h-12 w-full rounded-full bg-pine text-white hover:bg-[#14332f]"
           disabled={loading}
         >
           {loading ? "Sending..." : "Send Message"}

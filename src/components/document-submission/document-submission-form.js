@@ -4,7 +4,6 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Card, CardContent } from "@/components/ui/card";
 import { Upload } from "lucide-react";
 
 export function DocumentSubmissionForm() {
@@ -83,9 +82,10 @@ export function DocumentSubmissionForm() {
   };
 
   return (
-    <Card className="w-full max-w-md mx-auto">
-      <CardContent>
-        <form onSubmit={handleSubmit} className="space-y-4">
+    <form
+      onSubmit={handleSubmit}
+      className="space-y-5 rounded-[2rem] border border-stone-200 bg-white p-6 sm:p-8"
+    >
           <div>
             <Label htmlFor="firstName">First Name</Label>
             <Input
@@ -109,7 +109,7 @@ export function DocumentSubmissionForm() {
             <div className="flex items-center space-x-2">
               <label
                 htmlFor="document"
-                className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded cursor-pointer flex items-center"
+                className="inline-flex cursor-pointer items-center rounded-full bg-pine px-4 py-2 text-sm text-white hover:bg-[#14332f]"
               >
                 <Upload className="w-4 h-4 mr-2" />
                 Choose File
@@ -132,7 +132,7 @@ export function DocumentSubmissionForm() {
           )}
           <Button
             type="submit"
-            className="w-full mt-4 bg-blue-600 hover:bg-blue-700"
+            className="mt-2 h-12 w-full rounded-full bg-pine text-white hover:bg-[#14332f]"
             disabled={isSubmitting}
           >
             {isSubmitting ? (
@@ -144,8 +144,6 @@ export function DocumentSubmissionForm() {
               </>
             )}
           </Button>
-        </form>
-      </CardContent>
-    </Card>
+    </form>
   );
 }

@@ -6,8 +6,8 @@ import { Button } from "@/components/ui/button";
 import { Search } from "lucide-react";
 
 export function PropertySearchForm({ onSearch }) {
-  const [city, setCity] = useState("");
-  const [state, setState] = useState("");
+  const [city, setCity] = useState("Mineola");
+  const [state, setState] = useState("NY");
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -19,7 +19,7 @@ export function PropertySearchForm({ onSearch }) {
   return (
     <form
       onSubmit={handleSubmit}
-      className="mb-8 bg-white p-6 rounded-lg shadow-md"
+      className="mb-8 rounded-3xl border border-stone-200 bg-white p-6"
     >
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div>
@@ -35,7 +35,6 @@ export function PropertySearchForm({ onSearch }) {
             placeholder="Enter city name"
             value={city}
             onChange={(e) => setCity(e.target.value)}
-            className="w-full"
             required
           />
         </div>
@@ -52,14 +51,13 @@ export function PropertySearchForm({ onSearch }) {
             placeholder="Enter state (e.g., NY)"
             value={state}
             onChange={(e) => setState(e.target.value)}
-            className="w-full"
             required
           />
         </div>
       </div>
       <Button
         type="submit"
-        className="w-full md:w-auto mt-4 bg-blue-600 hover:bg-blue-700"
+        className="mt-4 h-12 rounded-full bg-pine px-6 text-white hover:bg-[#14332f]"
       >
         <Search className="w-4 h-4 mr-2" />
         Search Properties

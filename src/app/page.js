@@ -1,22 +1,18 @@
 import { Hero } from "@/components/hero";
 import { Services } from "@/components/services";
-import { WhyChooseUs } from "@/components/why-choose-us";
+import { HomeTools, HomeCta } from "@/components/home-sections";
 import { ClientTypes } from "@/components/client-types";
 import { Testimonials } from "@/components/testimonials";
-import { FAQ } from "@/components/faq";
-import { ContactSection } from "@/components/contact-section";
 
 export default function Home() {
   return (
-    <div className="flex flex-col min-h-screen">
+    <div className="flex min-h-screen flex-col">
       <Hero />
       <Services />
-      <WhyChooseUs />
+      <HomeTools />
       <ClientTypes />
       <Testimonials />
-      <FAQ />
-
-      <ContactSection />
+      <HomeCta />
     </div>
   );
 }

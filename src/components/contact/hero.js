@@ -1,15 +1,16 @@
 export function ContactHero() {
   return (
-    <section className="bg-[#101827] text-white py-24">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <h1 className="text-4xl md:text-5xl font-bold text-center mb-6">
-          Get in Touch
-        </h1>
-        <p className="text-xl text-center max-w-3xl mx-auto text-gray-300">
-          Reach out to us for professional bookkeeping, business automation, and
-          real estate services.
-        </p>
-      </div>
-    </section>
+    <header className="max-w-2xl">
+      <p className="text-xs font-semibold uppercase tracking-[0.22em] text-brass">
+        Contact
+      </p>
+      <h1 className="mt-3 text-4xl font-semibold tracking-tight text-ink sm:text-5xl">
+        Tell me what you need
+      </h1>
+      <p className="mt-4 text-lg leading-8 text-stone-600">
+        Bookkeeping, a home search, or a simpler workflow. A short note is
+        enough to start.
+      </p>
+    </header>
   );
 }

@@ -1,15 +1,16 @@
 export function FAQHero() {
   return (
-    <section className="bg-[#101827] text-white py-24">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <h1 className="text-4xl md:text-5xl font-bold text-center mb-6">
-          Frequently Asked Questions
-        </h1>
-        <p className="text-xl text-center max-w-3xl mx-auto text-gray-300">
-          Find answers to common questions about our bookkeeping, business
-          automation, and real estate services.
-        </p>
-      </div>
-    </section>
+    <header className="max-w-2xl">
+      <p className="text-xs font-semibold uppercase tracking-[0.22em] text-brass">
+        Questions
+      </p>
+      <h1 className="mt-3 text-4xl font-semibold tracking-tight text-ink sm:text-5xl">
+        Frequently asked questions
+      </h1>
+      <p className="mt-4 text-lg leading-8 text-stone-600">
+        A few answers about bookkeeping, automation, and real estate. If yours
+        is not here, send a note.
+      </p>
+    </header>
   );
 }

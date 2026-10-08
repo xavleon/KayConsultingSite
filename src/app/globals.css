@@ -2,20 +2,285 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* Print Styles - Optimized for all pages */
+@media print {
+  /* Hide navigation and non-essential elements */
+  header, nav, .no-print, button, .print-hide, 
+  .mobile-menu, .dropdown-container {
+    display: none !important;
+  }
+  
+  /* Reset page layout */
+  body {
+    margin: 0 !important;
+    padding: 20px !important;
+    font-size: 12pt !important;
+    line-height: 1.4 !important;
+    background: white !important;
+    color: black !important;
+  }
+  
+  /* Ensure content fits properly */
+  .container {
+    max-width: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+  
+  /* Optimize tables for print */
+  table {
+    width: 100% !important;
+    border-collapse: collapse !important;
+    margin-bottom: 20px !important;
+  }
+  
+  th, td {
+    border: 1px solid #ddd !important;
+    padding: 8px !important;
+    text-align: left !important;
+    color: black !important;
+    background: white !important;
+  }
+  
+  th {
+    background-color: #f8f9fa !important;
+    font-weight: bold !important;
+  }
+  
+  /* Ensure proper page breaks */
+  .page-break {
+    page-break-before: always !important;
+  }
+  
+  /* Hide interactive elements */
+  input, select, textarea {
+    border: 1px solid #ccc !important;
+    background: white !important;
+    color: black !important;
+  }
+  
+  /* Optimize all colors for print */
+  * {
+    color: black !important;
+    background: white !important;
+  }
+  
+  /* Ensure proper spacing */
+  .py-24, .py-16, .py-12, .py-8 {
+    padding: 20px 0 !important;
+  }
+  
+  .bg-gray-100, .bg-gray-50, .bg-blue-50 {
+    background: white !important;
+  }
+  
+  /* Optimize shadows and borders */
+  .shadow-md, .shadow-lg, .shadow-xl {
+    box-shadow: none !important;
+    border: 1px solid #ddd !important;
+  }
+  
+  /* Ensure text is readable */
+  .text-gray-600, .text-gray-700, .text-gray-800 {
+    color: black !important;
+  }
+  
+  /* Optimize grid layouts */
+  .grid {
+    display: block !important;
+  }
+  
+  .grid-cols-1, .grid-cols-2, .lg\\:grid-cols-2 {
+    grid-template-columns: none !important;
+  }
+  
+  /* Ensure proper margins between sections */
+  .space-y-6 > * + * {
+    margin-top: 20px !important;
+  }
+  
+  /* Hide decorative elements */
+  .rounded-lg, .rounded-md {
+    border-radius: 0 !important;
+  }
+  
+  /* Ensure forms print properly */
+  form {
+    margin-bottom: 20px !important;
+  }
+  
+  /* Optimize buttons for print */
+  button {
+    display: none !important;
+  }
+  
+  /* Ensure proper page margins */
+  @page {
+    margin: 1in;
+  }
+  
+  /* Hide print button itself */
+  .print-hide {
+    display: none !important;
+  }
+  
+  /* Show print-only elements */
+  .print\\:block {
+    display: block !important;
+  }
+  
+  /* Ensure proper font sizes */
+  h1, h2, h3, h4, h5, h6 {
+    color: black !important;
+    margin-bottom: 10px !important;
+  }
+  
+  /* Optimize links */
+  a {
+    color: black !important;
+    text-decoration: underline !important;
+  }
+  
+  /* Ensure proper spacing for lists */
+  ul, ol {
+    margin-left: 20px !important;
+    margin-bottom: 10px !important;
+  }
+  
+  li {
+    margin-bottom: 5px !important;
+  }
+
+  body:has(.expense-print) footer,
+  body:has(.expense-print) .fixed,
+  body:has(.expense-print) .expense-screen {
+    display: none !important;
+  }
+
+  body:has(.expense-print) main,
+  body:has(.expense-print) main > div,
+  body:has(.expense-print) main > div > div {
+    min-height: 0 !important;
+    max-width: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    background: white !important;
+  }
+
+  .expense-print {
+    display: block !important;
+    max-width: 7.2in;
+    margin: 0 auto !important;
+    padding: 0 0 0.25in !important;
+    border-top: 10px solid #1c4540 !important;
+    font-family: Georgia, "Times New Roman", serif !important;
+    color: #1c1917 !important;
+    background: white !important;
+  }
+
+  .expense-print * {
+    color: #1c1917 !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    font-family: inherit !important;
+  }
+
+  .expense-print .print-kicker {
+    margin: 18px 0 0 !important;
+    font-family: Georgia, "Times New Roman", serif !important;
+    font-size: 9pt !important;
+    letter-spacing: 0.22em !important;
+    text-transform: uppercase !important;
+    color: #9a7344 !important;
+  }
+
+  .expense-print .print-title {
+    margin: 8px 0 0 !important;
+    font-size: 26pt !important;
+    line-height: 1.05 !important;
+    font-weight: 600 !important;
+    letter-spacing: -0.03em !important;
+  }
+
+  .expense-print .print-date,
+  .expense-print .print-sub,
+  .expense-print .print-note,
+  .expense-print .print-signoff {
+    margin: 6px 0 0 !important;
+    font-size: 11pt !important;
+    line-height: 1.45 !important;
+  }
+
+  .expense-print .print-rule {
+    height: 1px !important;
+    margin: 18px 0 !important;
+    background: #1c1917 !important;
+  }
+
+  .expense-print .print-label {
+    margin: 0 !important;
+    font-size: 9pt !important;
+    letter-spacing: 0.18em !important;
+    text-transform: uppercase !important;
+    color: #9a7344 !important;
+  }
+
+  .expense-print .print-amount {
+    margin: 4px 0 0 !important;
+    font-size: 36pt !important;
+    line-height: 1 !important;
+    font-weight: 600 !important;
+    letter-spacing: -0.03em !important;
+  }
+
+  .expense-print h2 {
+    margin: 22px 0 6px !important;
+    font-size: 11pt !important;
+    letter-spacing: 0.16em !important;
+    text-transform: uppercase !important;
+    font-weight: 600 !important;
+  }
+
+  .expense-print table {
+    width: 100% !important;
+    margin: 0 !important;
+    border-collapse: collapse !important;
+  }
+
+  .expense-print th,
+  .expense-print td {
+    border: none !important;
+    border-bottom: 1px solid #d6d3d1 !important;
+    padding: 7px 0 !important;
+    background: transparent !important;
+    font-size: 12pt !important;
+    color: #1c1917 !important;
+  }
+
+  .expense-print td:last-child {
+    text-align: right !important;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .expense-print .print-total td {
+    font-weight: 700 !important;
+    border-bottom: none !important;
+  }
+
+  .expense-print .print-signoff {
+    margin-top: 28px !important;
+    font-size: 10pt !important;
+  }
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+:root {
+  --background: #f4f1eb;
+  --foreground: #1c1917;
 }
 
 body {
   color: var(--foreground);
   background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: inherit;
+  -webkit-font-smoothing: antialiased;
 }

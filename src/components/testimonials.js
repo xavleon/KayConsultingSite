@@ -1,88 +1,51 @@
-import { Card, CardContent } from "@/components/ui/card";
-import { QuoteIcon } from "lucide-react";
-
 const testimonials = [
   {
     name: "Maria Rodriguez",
-    role: "Small Business Owner",
+    role: "Small business owner",
     content:
-      "Kay Bookkeeping has been instrumental in helping me manage my finances. Their attention to detail and professional service is unmatched.",
+      "Karla has been steady with my books. I know the numbers are being watched, and I am not guessing at tax time.",
   },
   {
     name: "David Nguyen",
-    role: "Freelance Designer",
+    role: "Freelance designer",
     content:
-      "As a freelancer, keeping track of my finances was always a challenge. Thanks to Kay Bookkeeping, I can focus on my work knowing my books are in order.",
+      "Keeping my own finances was the part of freelancing I kept avoiding. Working with Karla let me stay with the client work.",
   },
   {
     name: "Aisha Patel",
-    role: "Startup Founder",
+    role: "Startup founder",
     content:
-      "The team at Kay Bookkeeping has been a crucial partner in our startup's growth. Their expertise has helped us make informed financial decisions.",
+      "Karla helped us read the business instead of just collecting receipts. The decisions got easier once the reports were clear.",
   },
-  //   {
-  //     name: "David Wilson",
-  //     role: "Real Estate Investor",
-  //     content:
-  //       "Kay's combined knowledge of bookkeeping and real estate has been a game-changer for my investment strategy. They've helped me optimize my property finances and identify great investment opportunities.",
-  //   },
-  //   {
-  //     name: "Emma Thompson",
-  //     role: "Restaurant Owner",
-  //     content:
-  //       "Running a restaurant comes with complex financials. Kay Bookkeeping has simplified everything for me, from daily sales tracking to payroll management. Their service has given me peace of mind.",
-  //   },
-  //   {
-  //     name: "Frank Rodriguez",
-  //     role: "Construction Company Owner",
-  //     content:
-  //       "Kay's expertise in both bookkeeping and real estate has been perfect for my construction business. They've helped me navigate project-based accounting and property development finances with ease.",
-  //   },
 ];
 
 export function Testimonials() {
   return (
-    <section className="py-24 bg-gray-900">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Header */}
-
-        <div className="text-center mb-16">
-          <h2 className="text-3xl font-bold tracking-tight sm:text-4xl mb-4 text-white">
-            What Our Clients Say
-          </h2>
-          <p className="text-lg text-blue-200 max-w-2xl mx-auto">
-            Don't just take our word for it - hear from some of our satisfied
-            clients
+    <section className="bg-paper py-20 sm:py-24">
+      <div className="mx-auto max-w-6xl px-6 lg:px-8">
+        <div className="max-w-xl">
+          <p className="text-xs font-semibold uppercase tracking-[0.22em] text-brass">
+            Clients
           </p>
+          <h2 className="mt-3 text-3xl font-semibold tracking-tight text-ink sm:text-4xl">
+            Notes from people I work with
+          </h2>
         </div>
 
-        {/* Testimonials Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
-          {testimonials.map((testimonial, index) => (
-            <Card
-              key={index}
-              className="bg-gray-800 shadow-lg border border-gray-700 flex flex-col"
+        <div className="mt-12 grid gap-6 md:grid-cols-3">
+          {testimonials.map((testimonial) => (
+            <figure
+              key={testimonial.name}
+              className="flex flex-col justify-between rounded-3xl bg-white p-7"
             >
-              <div className="mt-4 text-center">
-                <QuoteIcon className="w-8 h-8 text-blue-400 mx-auto" />
-              </div>
-              <CardContent className="p-6 flex flex-col h-full">
-                {/* Testimonial Content */}
-                <p className="text-gray-300 text-center flex-grow">
-                  &ldquo;{testimonial.content}&rdquo;
-                </p>
-
-                {/* Name and Role at the Bottom */}
-                <div className=" border-t border-gray-700 pt-6 text-center">
-                  <h3 className="font-semibold text-lg text-white">
-                    {testimonial.name}
-                  </h3>
-                  <p className="text-sm text-blue-300">{testimonial.role}</p>
-                </div>
-
-                {/* Icon at the Very Bottom */}
-              </CardContent>
-            </Card>
+              <blockquote className="text-base leading-7 text-stone-700">
+                “{testimonial.content}”
+              </blockquote>
+              <figcaption className="mt-8">
+                <p className="font-semibold text-ink">{testimonial.name}</p>
+                <p className="text-sm text-stone-500">{testimonial.role}</p>
+              </figcaption>
+            </figure>
           ))}
         </div>
       </div>

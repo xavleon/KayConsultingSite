@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export function Footer() {
   return (
-    <footer className="bg-gray-900 text-white relative">
+    <footer className="relative bg-[#14332f] text-white">
       {/* Vertical Divider */}
       <div className="absolute top-0 left-0 w-full h-1 bg-gray-600"></div>
 
@@ -10,10 +10,10 @@ export function Footer() {
         <div className="grid grid-cols-1 lg:grid-cols-7 gap-y-8 gap-x-16">
           {/* Column 1: Business Information */}
           <div className="text-left lg:col-span-3">
-            <h3 className="text-xl font-semibold mb-4 text-blue-400">
-              Kay Leon Business Solutions
+            <h3 className="text-xl font-semibold mb-4 text-[#e4d3b4]">
+              Kay Leon
             </h3>
-            <p className="text-gray-300 w-2/3">
+            <p className="max-w-sm text-gray-300">
               Professional bookkeeping, real estate services, and business
               automation solutions for individuals, entrepreneurs, and small
               businesses.
@@ -22,7 +22,7 @@ export function Footer() {
 
           {/* Column 2: Quick Links */}
           <div className="text-left lg:col-span-2">
-            <h3 className="text-xl font-semibold mb-4 text-blue-400">
+            <h3 className="text-xl font-semibold mb-4 text-[#e4d3b4]">
               Quick Links
             </h3>
             <nav>
@@ -30,7 +30,7 @@ export function Footer() {
                 <li>
                   <Link
                     href="/"
-                    className="text-gray-300 hover:text-blue-400 transition-colors"
+                    className="text-gray-300 hover:text-[#e4d3b4] transition-colors"
                   >
                     Home
                   </Link>
@@ -38,7 +38,7 @@ export function Footer() {
                 <li>
                   <Link
                     href="/about"
-                    className="text-gray-300 hover:text-blue-400 transition-colors"
+                    className="text-gray-300 hover:text-[#e4d3b4] transition-colors"
                   >
                     About
                   </Link>
@@ -46,7 +46,7 @@ export function Footer() {
                 <li>
                   <Link
                     href="/services"
-                    className="text-gray-300 hover:text-blue-400 transition-colors"
+                    className="text-gray-300 hover:text-[#e4d3b4] transition-colors"
                   >
                     Services
                   </Link>
@@ -54,7 +54,7 @@ export function Footer() {
                 <li>
                   <Link
                     href="/testimonials"
-                    className="text-gray-300 hover:text-blue-400 transition-colors"
+                    className="text-gray-300 hover:text-[#e4d3b4] transition-colors"
                   >
                     Testimonials
                   </Link>
@@ -62,7 +62,7 @@ export function Footer() {
                 <li>
                   <Link
                     href="/mortgage-calculator"
-                    className="text-gray-300 hover:text-blue-400 transition-colors"
+                    className="text-gray-300 hover:text-[#e4d3b4] transition-colors"
                   >
                     Mortgage Calculator
                   </Link>
@@ -70,7 +70,7 @@ export function Footer() {
                 <li>
                   <Link
                     href="/contact"
-                    className="text-gray-300 hover:text-blue-400 transition-colors"
+                    className="text-gray-300 hover:text-[#e4d3b4] transition-colors"
                   >
                     Contact
                   </Link>
@@ -81,8 +81,8 @@ export function Footer() {
 
           {/* Column 3: Contact Information */}
           <div className="text-left lg:col-span-2">
-            <h3 className="text-xl font-semibold mb-4 text-blue-400">
-              Contact Us
+            <h3 className="text-xl font-semibold mb-4 text-[#e4d3b4]">
+              Contact
             </h3>
             <div className="space-y-2">
               <p className="text-gray-300">Long Island, NY</p>
@@ -90,7 +90,7 @@ export function Footer() {
                 Phone:{" "}
                 <a
                   href="tel:9179922528"
-                  className="text-blue-400 hover:text-blue-300 transition-colors"
+                  className="text-[#e4d3b4] hover:text-white transition-colors"
                 >
                   (917) 992-2528
                 </a>
@@ -99,7 +99,7 @@ export function Footer() {
                 Email:{" "}
                 <a
                   href="mailto:info@keybykay.com"
-                  className="text-blue-400 hover:text-blue-300 transition-colors "
+                  className="text-[#e4d3b4] hover:text-white transition-colors "
                 >
                   info@keybykay.com
                 </a>
@@ -123,7 +123,7 @@ export function Footer() {
               href="https://excilify.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-blue-400 hover:text-blue-300 transition-colors"
+              className="text-[#e4d3b4] hover:text-white transition-colors"
             >
               Excilify Inc.
             </Link>

@@ -1,107 +1,88 @@
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
-
-import {
-  FileSpreadsheet,
-  Receipt,
-  CreditCard,
-  FileText,
-  Calculator,
-  BookOpen,
-} from "lucide-react";
+import { BookOpen, Home, Workflow } from "lucide-react";
+import Link from "next/link";
 
 const services = [
   {
-    title: "Invoicing",
+    title: "Bookkeeping",
     description:
-      "Streamlined invoice management and tracking for accurate financial records.",
-    details: "Stay on top of your finances with precise and timely invoicing.",
-    icon: Receipt,
-  },
-  {
-    title: "Real Estate Consulting",
-    description: "Expert advice on property investments and maximizing value.",
-    details:
-      "Get tailored guidance for buying, selling, or managing properties.",
-    icon: CreditCard,
-  },
-  {
-    title: "Financial Planning",
-    description:
-      "Customized financial strategies for personal and business success.",
-    details: "We help you plan for long-term success and financial stability.",
-    icon: FileSpreadsheet,
-  },
-  {
-    title: "Tax Preparation",
-    description:
-      "Comprehensive annual and quarterly tax statement preparation.",
-    details:
-      "Accurate tax preparation to minimize liabilities and ensure compliance.",
-    icon: FileText,
-  },
-  {
-    title: "Workflow Automation",
-    description: "Automating tasks to enhance productivity and save time.",
-    details:
-      "Streamline repetitive processes with custom automation solutions.",
-    icon: Calculator,
-  },
-  {
-    title: "QuickBooks Training",
-    description:
-      "Hands-on training for seamless QuickBooks integration and use.",
-    details:
-      "Master QuickBooks to efficiently manage your finances and reporting.",
+      "Monthly books that stay current, so tax season and lending questions are not a scramble.",
+    points: [
+      "Invoicing and expense tracking",
+      "Reconciliations and financial statements",
+      "QuickBooks setup and training",
+      "Records prepared for your tax preparer",
+    ],
     icon: BookOpen,
+  },
+  {
+    title: "Real estate",
+    description:
+      "Guidance for buying, selling, or thinking through a property with the numbers in view.",
+    points: [
+      "Home search and offer strategy",
+      "Investment and value questions",
+      "Coordination through closing",
+      "A second look at what you can afford",
+    ],
+    icon: Home,
+  },
+  {
+    title: "Business automation",
+    description:
+      "The repetitive admin — invoices, follow-ups, file handoffs — set up so it runs without you.",
+    points: [
+      "Workflows for billing and paperwork",
+      "Fewer manual data entry steps",
+      "Clearer handoffs between tools",
+      "Time back for client work",
+    ],
+    icon: Workflow,
   },
 ];
 
 export function Services() {
   return (
-    <section className="py-24 bg-gray-50">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Header */}
-        <div className="text-center mb-16">
-          <h2 className="text-3xl font-bold tracking-tight sm:text-4xl mb-4 text-gray-900">
-            My Services
-          </h2>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            Comprehensive solutions tailored for Bookkeeping, Real Estate, and
-            Business Automation.
-          </p>
+    <section className="bg-white py-20 sm:py-24">
+      <div className="mx-auto max-w-6xl px-6 lg:px-8">
+        <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+          <div className="max-w-xl">
+            <p className="text-xs font-semibold uppercase tracking-[0.22em] text-brass">
+              Services
+            </p>
+            <h2 className="mt-3 text-3xl font-semibold tracking-tight text-ink sm:text-4xl">
+              Three ways I can help
+            </h2>
+          </div>
+          <Link
+            href="/services"
+            className="text-sm font-medium text-pine underline-offset-4 hover:underline"
+          >
+            Full service list
+          </Link>
         </div>
 
-        {/* Cards Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+        <div className="mt-12 grid gap-6 lg:grid-cols-3">
           {services.map((service) => (
-            <Card
+            <article
               key={service.title}
-              className="bg-white shadow-lg rounded-lg mx-auto w-full max-w-sm transition-transform transform hover:scale-105"
+              className="flex flex-col rounded-3xl border border-stone-200 bg-paper p-7"
             >
-              <CardHeader className="p-6">
-                {/* Icon Container */}
-                <div className="mb-4 w-16 h-16 rounded-full bg-blue-100 flex items-center justify-center mx-auto">
-                  <service.icon className="w-8 h-8 text-blue-600" />
-                </div>
-                {/* Card Title */}
-                <CardTitle className="text-lg font-semibold text-gray-900 text-center">
-                  {service.title}
-                </CardTitle>
-                {/* Card Description */}
-                <p className="text-sm text-gray-600 text-center mt-2">
-                  {service.description}
-                </p>
-              </CardHeader>
-              <CardContent className="p-2  text-gray-700 text-sm  border-t ">
-                {service.details}
-              </CardContent>
-            </Card>
+              <service.icon className="h-5 w-5 text-pine" aria-hidden="true" />
+              <h3 className="mt-6 text-xl font-semibold text-ink">
+                {service.title}
+              </h3>
+              <p className="mt-3 text-sm leading-6 text-stone-600">
+                {service.description}
+              </p>
+              <ul className="mt-6 space-y-2 text-sm text-stone-700">
+                {service.points.map((point) => (
+                  <li key={point} className="flex gap-2">
+                    <span className="mt-2 h-1 w-1 shrink-0 rounded-full bg-brass" />
+                    {point}
+                  </li>
+                ))}
+              </ul>
+            </article>
           ))}
         </div>
       </div>

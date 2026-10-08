@@ -1,174 +1,261 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
-import { Label } from "@/components/ui/label";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { PlusCircle } from "lucide-react";
+import { useState } from "react";
 import { ExpenseList } from "./expense-list";
-import { SavingsRecommendation } from "./savings-recommendation";
+import {
+  SavingsRecommendation,
+  formatMoney,
+  getSavingsSplit,
+} from "./savings-recommendation";
 
 export function ExpenseTracker() {
   const [income, setIncome] = useState("");
   const [expenses, setExpenses] = useState([]);
-  const [newExpense, setNewExpense] = useState({ name: "", amount: "" });
-  const [totalExpenses, setTotalExpenses] = useState(0);
-  const [remainingBudget, setRemainingBudget] = useState(0);
+  const [expenseName, setExpenseName] = useState("");
+  const [expenseAmount, setExpenseAmount] = useState("");
 
-  useEffect(() => {
-    const total = expenses.reduce(
-      (sum, expense) => sum + parseFloat(expense.amount),
-      0
-    );
-    setTotalExpenses(total);
-    setRemainingBudget(income ? parseFloat(income) - total : 0);
-  }, [expenses, income]);
+  const paycheck = income ? parseFloat(income) : 0;
+  const monthlyIncome = paycheck ? (paycheck * 26) / 12 : 0;
+  const totalExpenses = expenses.reduce(
+    (sum, expense) => sum + expense.amount,
+    0
+  );
+  const remainingBudget = monthlyIncome - totalExpenses;
+  const spentShare =
+    monthlyIncome > 0 ? Math.round((totalExpenses / monthlyIncome) * 100) : null;
+  const split = getSavingsSplit(monthlyIncome, totalExpenses);
+  const preparedOn = new Date().toLocaleDateString("en-US", {
+    weekday: "long",
+    month: "long",
+    day: "numeric",
+    year: "numeric",
+  });
 
-  const handleAddExpense = (e) => {
-    e.preventDefault();
-    if (newExpense.name && newExpense.amount) {
-      setExpenses([...expenses, { ...newExpense, id: Date.now() }]);
-      setNewExpense({ name: "", amount: "" });
-    }
+  const addExpense = () => {
+    const amount = parseFloat(expenseAmount);
+    if (!expenseName.trim() || !Number.isFinite(amount) || amount <= 0) return;
+    setExpenses([
+      ...expenses,
+      { id: Date.now(), name: expenseName.trim(), amount },
+    ]);
+    setExpenseName("");
+    setExpenseAmount("");
   };
 
-  const handleDeleteExpense = (id) => {
+  const deleteExpense = (id) => {
     setExpenses(expenses.filter((expense) => expense.id !== id));
   };
 
   return (
-    <Card className="w-full max-w-4xl mx-auto bg-gray-50 shadow-lg border border-gray-200 rounded-lg">
-      <CardHeader className="bg-[#101827] text-white p-6 rounded-t-lg">
-        <CardTitle className="text-3xl font-bold text-center">
-          Expense Tracker & Savings Planner
-        </CardTitle>
-      </CardHeader>
-      <CardContent className="p-6">
-        <div className="grid gap-6 md:grid-cols-2">
-          {/* Left Section: Add Expenses */}
-          <div>
-            <Label htmlFor="income" className="text-gray-700 font-semibold">
-              Bi-weekly Paycheck
-            </Label>
-            <Input
-              id="income"
-              type="number"
-              value={income}
-              onChange={(e) => setIncome(e.target.value)}
-              placeholder="Enter your bi-weekly income"
-              className="mt-2 ml-2 bg-gray-100 border-gray-300 text-gray-800 w-full md:w-1/2"
-            />
-
-            <form onSubmit={handleAddExpense} className="mt-6">
-              <Label
-                htmlFor="expenseName"
-                className="text-gray-700 font-semibold"
+    <>
+      <div className="expense-screen">
+        <div className="grid items-start gap-8 lg:grid-cols-[1.15fr_0.85fr]">
+          <div className="space-y-6">
+            <section className="rounded-3xl border border-stone-200 bg-white p-6">
+              <label
+                htmlFor="paycheck"
+                className="text-sm font-medium text-ink"
               >
-                New Expense
-              </Label>
-              <div className="flex flex-wrap gap-2 mt-2 text-black">
-                <Input
-                  id="expenseName"
-                  type="text"
-                  value={newExpense.name}
-                  onChange={(e) =>
-                    setNewExpense({ ...newExpense, name: e.target.value })
-                  }
-                  placeholder="Expense name"
-                  className="flex-1 bg-gray-100 border-gray-300 "
-                />
-                <Input
-                  type="number"
-                  value={newExpense.amount}
-                  onChange={(e) =>
-                    setNewExpense({ ...newExpense, amount: e.target.value })
-                  }
-                  placeholder="Amount"
-                  className="flex-1 bg-gray-100 border-gray-300"
-                />
-                <Button
-                  type="submit"
-                  size="icon"
-                  className="bg-[#101827] text-white hover:bg-blue-600"
-                >
-                  <PlusCircle className="h-5 w-5" />
-                </Button>
-              </div>
-            </form>
-
-            {/* Expense List */}
-            <div className="mt-6">
-              <ExpenseList expenses={expenses} onDelete={handleDeleteExpense} />
-            </div>
-          </div>
-
-          {/* Right Section: Summary & Recommendations */}
-          <div>
-            <Card className="bg-blue-50 border border-blue-100 shadow-md">
-              <CardContent className="p-6">
-                <h3 className="text-xl font-semibold mb-4 text-[#101827]">
-                  Summary
-                </h3>
-                <p className="text-gray-700">
-                  Monthly Income:{" "}
-                  <span className="font-semibold text-blue-600">
-                    ${income ? parseFloat(income * 2).toFixed(2) : ""}
-                  </span>
-                </p>
-                <p className="text-gray-700">
-                  Total Expenses:{" "}
-                  <span className="font-semibold text-blue-600">
-                    ${totalExpenses ? totalExpenses.toFixed(2) : ""}
-                  </span>
-                </p>
-                <div>
-                  <span
-                    className={`font-bold mt-4 ${
-                      remainingBudget >= 0 ? "text-green-600" : "text-red-600"
-                    }`}
-                  >
-                    {remainingBudget >= 0
-                      ? `Remaining Budget: $${remainingBudget.toFixed(2)}`
-                      : `Over Budget: $${remainingBudget.toFixed(2)}`}
-                  </span>
-                  {remainingBudget < 0 && (
-                    <p className="text-red-600 mt-2">
-                      You should{" "}
-                      <a href="tel:+9179922528">
-                        <span>
-                          {" "}
-                          <u>call me </u>{" "}
-                        </span>
-                      </a>{" "}
-                      at your earliest convenience. <br />
-                      We can develop a game plan.
-                    </p>
-                  )}
-                </div>
-              </CardContent>
-            </Card>
-
-            {/* Savings Recommendation */}
-            <div className="mt-6">
-              <SavingsRecommendation
-                income={parseFloat(income) || 0}
-                expenses={totalExpenses || 0}
+                Bi-weekly paycheck
+              </label>
+              <input
+                id="paycheck"
+                type="number"
+                min="0"
+                step="0.01"
+                value={income}
+                onChange={(e) => setIncome(e.target.value)}
+                placeholder="2,500"
+                className="mt-3 h-12 w-full rounded-xl border border-stone-200 bg-white px-3 text-ink outline-none focus:ring-2 focus:ring-pine"
               />
-            </div>
+              <p className="mt-3 text-sm text-stone-500">
+                {paycheck
+                  ? `About ${formatMoney(monthlyIncome)} a month, from 26 paychecks a year.`
+                  : "A month is estimated as this paycheck × 26 ÷ 12."}
+              </p>
+            </section>
 
-            {/* Print Button */}
-            <div className="mt-6 text-center">
-              <button
-                onClick={() => window.print()}
-                className="p-2 bg-blue-600 text-white rounded"
+            <section className="rounded-3xl border border-stone-200 bg-white p-6">
+              <h2 className="text-lg font-semibold text-ink">Add an expense</h2>
+              <form
+                className="mt-4 flex flex-col gap-3 sm:flex-row"
+                onSubmit={(event) => {
+                  event.preventDefault();
+                  addExpense();
+                }}
               >
-                Print
-              </button>
-            </div>
+                <input
+                  type="text"
+                  value={expenseName}
+                  onChange={(e) => setExpenseName(e.target.value)}
+                  placeholder="Rent, groceries…"
+                  aria-label="Expense name"
+                  className="h-12 w-full rounded-xl border border-stone-200 bg-white px-3 text-ink outline-none focus:ring-2 focus:ring-pine sm:flex-1"
+                />
+                <input
+                  type="number"
+                  min="0"
+                  step="0.01"
+                  value={expenseAmount}
+                  onChange={(e) => setExpenseAmount(e.target.value)}
+                  placeholder="0.00"
+                  aria-label="Expense amount"
+                  className="h-12 w-full rounded-xl border border-stone-200 bg-white px-3 text-ink outline-none focus:ring-2 focus:ring-pine sm:w-36"
+                />
+                <button
+                  type="submit"
+                  className="h-12 rounded-full bg-pine px-6 text-sm font-medium text-white hover:bg-[#14332f]"
+                >
+                  Add
+                </button>
+              </form>
+
+              <div className="mt-6">
+                <div className="mb-2 flex items-baseline justify-between">
+                  <h3 className="text-sm font-medium text-ink">This month</h3>
+                  <span className="text-sm text-stone-500">
+                    {formatMoney(totalExpenses)}
+                  </span>
+                </div>
+                <ExpenseList expenses={expenses} onDelete={deleteExpense} />
+              </div>
+            </section>
           </div>
+
+          <aside className="space-y-6 lg:sticky lg:top-28">
+            <section className="rounded-3xl bg-pine p-6 text-white">
+              <p className="text-xs font-semibold uppercase tracking-[0.22em] text-[#e4d3b4]">
+                {remainingBudget >= 0 ? "Left this month" : "Short this month"}
+              </p>
+              <p className="mt-3 text-4xl font-semibold tracking-tight">
+                {formatMoney(Math.abs(remainingBudget))}
+              </p>
+              {spentShare != null && (
+                <div className="mt-5">
+                  <div className="h-1.5 overflow-hidden rounded-full bg-white/20">
+                    <div
+                      className="h-full rounded-full bg-[#e4d3b4]"
+                      style={{ width: `${Math.min(spentShare, 100)}%` }}
+                    />
+                  </div>
+                  <p className="mt-2 text-sm text-white/80">
+                    Spending is {spentShare}% of monthly income.
+                  </p>
+                </div>
+              )}
+              <dl className="mt-6 space-y-2 border-t border-white/15 pt-4 text-sm">
+                <div className="flex justify-between gap-4">
+                  <dt className="text-white/75">Monthly income</dt>
+                  <dd>{formatMoney(monthlyIncome)}</dd>
+                </div>
+                <div className="flex justify-between gap-4">
+                  <dt className="text-white/75">Expenses</dt>
+                  <dd>{formatMoney(totalExpenses)}</dd>
+                </div>
+              </dl>
+            </section>
+
+            <section className="rounded-3xl border border-stone-200 bg-white p-6">
+              <SavingsRecommendation
+                monthlyIncome={monthlyIncome}
+                totalExpenses={totalExpenses}
+              />
+            </section>
+
+            <button
+              type="button"
+              onClick={() => window.print()}
+              className="h-12 w-full rounded-full border border-stone-300 bg-white text-sm font-medium text-ink hover:bg-paper"
+            >
+              Print snapshot
+            </button>
+          </aside>
         </div>
-      </CardContent>
-    </Card>
+      </div>
+
+      <article className="expense-print hidden">
+        <p className="print-kicker">Kay Leon · Long Island</p>
+        <h1 className="print-title">Monthly expense snapshot</h1>
+        <p className="print-date">Prepared {preparedOn}</p>
+
+        <div className="print-rule" />
+
+        <p className="print-label">
+          {remainingBudget >= 0 ? "Left this month" : "Short this month"}
+        </p>
+        <p className="print-amount">{formatMoney(Math.abs(remainingBudget))}</p>
+        <p className="print-sub">
+          {formatMoney(monthlyIncome)} in income
+          {spentShare != null ? ` · spending is ${spentShare}%` : ""}
+          {" · "}
+          {formatMoney(totalExpenses)} in expenses
+        </p>
+
+        <h2>Income</h2>
+        <table>
+          <tbody>
+            <tr>
+              <td>Bi-weekly paycheck</td>
+              <td>{paycheck ? formatMoney(paycheck) : "—"}</td>
+            </tr>
+            <tr>
+              <td>Estimated month</td>
+              <td>{formatMoney(monthlyIncome)}</td>
+            </tr>
+          </tbody>
+        </table>
+        <p className="print-note">26 paychecks a year, divided into 12 months.</p>
+
+        <h2>Expenses</h2>
+        {expenses.length > 0 ? (
+          <table>
+            <tbody>
+              {expenses.map((expense) => (
+                <tr key={expense.id}>
+                  <td>{expense.name}</td>
+                  <td>{formatMoney(expense.amount)}</td>
+                </tr>
+              ))}
+              <tr className="print-total">
+                <td>Total</td>
+                <td>{formatMoney(totalExpenses)}</td>
+              </tr>
+            </tbody>
+          </table>
+        ) : (
+          <p className="print-note">No expenses listed.</p>
+        )}
+
+        <h2>A starting split</h2>
+        <table>
+          <tbody>
+            <tr>
+              <td>Emergency fund · 10% of income</td>
+              <td>{formatMoney(split.emergencyFund)}</td>
+            </tr>
+            <tr>
+              <td>Retirement · 15% of income</td>
+              <td>{formatMoney(split.retirement)}</td>
+            </tr>
+            <tr>
+              <td>Short-term · half of what&apos;s left</td>
+              <td>{formatMoney(split.shortTermSavings)}</td>
+            </tr>
+          </tbody>
+        </table>
+        {remainingBudget < 0 && (
+          <p className="print-note">
+            This month is already short, so the split is a target for later,
+            not cash on hand.
+          </p>
+        )}
+
+        <p className="print-signoff">
+          Estimates only, not financial advice.
+          <br />
+          keybykay.com
+        </p>
+      </article>
+    </>
   );
 }

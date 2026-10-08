@@ -1,39 +1,37 @@
-import { MapPin, Phone, Mail, Clock } from "lucide-react";
+import { Clock, Mail, MapPin, Phone } from "lucide-react";
 
 export function ContactInfo() {
   return (
-    <div className="bg-[#121827] text-white rounded-lg shadow-xl w-full p-6 space-y-6">
-      <h2 className="text-2xl font-bold">Contact Information</h2>
-      <div className="space-y-4">
+    <div className="rounded-[2rem] bg-pine p-6 text-white sm:p-8">
+      <h2 className="text-2xl font-semibold">Contact</h2>
+      <div className="mt-6 space-y-5 text-sm leading-6">
         <div className="flex items-start gap-3">
-          <MapPin className="w-6 h-6 text-blue-400 flex-shrink-0 mt-1" />
-          <div>
-            <p className="text-white">
-              Coverage: Five Boroughs and Long Island <br />
-              Offices in Queens and Mineola
-            </p>
-            {/* <p className="text-gray-300">Long Island, NY </p> */}
-          </div>
+          <MapPin className="mt-0.5 h-5 w-5 shrink-0 text-[#e4d3b4]" />
+          <p>
+            Five boroughs and Long Island
+            <br />
+            Offices in Queens and Mineola
+          </p>
         </div>
         <div className="flex items-center gap-3">
-          <Phone className="w-6 h-6 text-blue-400 flex-shrink-0" />
-          <a href="tel:9179922528" className="text-white">
+          <Phone className="h-5 w-5 shrink-0 text-[#e4d3b4]" />
+          <a href="tel:9179922528" className="hover:text-[#e4d3b4]">
             (917) 992-2528
           </a>
         </div>
-
         <div className="flex items-center gap-3">
-          <Mail className="w-6 h-6 text-blue-400 flex-shrink-0" />
-          <p className="text-white">info@keybykay.com</p>
+          <Mail className="h-5 w-5 shrink-0 text-[#e4d3b4]" />
+          <a href="mailto:info@keybykay.com" className="hover:text-[#e4d3b4]">
+            info@keybykay.com
+          </a>
         </div>
         <div className="flex items-start gap-3">
-          <Clock className="w-6 h-6 text-blue-400 flex-shrink-0 mt-1" />
+          <Clock className="mt-0.5 h-5 w-5 shrink-0 text-[#e4d3b4]" />
           <div>
-            <p className="text-white">Monday - Friday: 9am - 9pm</p>
-            <p className="text-gray-300">Saturday - Sunday: Closed</p>
-            <p className="text-gray-300">
-              {" "}
-              <br /> **Weekend appointments available upon request**
+            <p>Monday–Friday, 9am–9pm</p>
+            <p className="text-stone-300">Saturday and Sunday closed</p>
+            <p className="mt-2 text-stone-300">
+              Weekend appointments are available on request.
             </p>
           </div>
         </div>

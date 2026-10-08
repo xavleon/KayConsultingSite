@@ -1,20 +1,19 @@
 "use client";
+
 import { ContactHero } from "@/components/contact/hero";
 import { ContactForm } from "@/components/contact/contact-form";
 import { ContactInfo } from "@/components/contact/contact-info";
 
 export default function ContactPage() {
   return (
-    <main className="min-h-screen pt-16">
-      <ContactHero />
-      <section className="py-24 bg-gray-50">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
-          <div className="grid lg:grid-cols-2 gap-8 w-full lg:w-full xl:w-full mx-auto">
-            <ContactForm />
-            <ContactInfo />
-          </div>
+    <main className="min-h-screen bg-paper pb-28 pt-28">
+      <div className="mx-auto max-w-6xl px-6 lg:px-8">
+        <ContactHero />
+        <div className="mt-12 grid items-start gap-6 lg:grid-cols-2">
+          <ContactForm />
+          <ContactInfo />
         </div>
-      </section>
+      </div>
     </main>
   );
 }

@@ -7,39 +7,34 @@ import { Loader2 } from "lucide-react";
 
 export function PropertySearch() {
   const [properties, setProperties] = useState([]);
+  const [total, setTotal] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
+  const [query, setQuery] = useState({ city: "Mineola", state: "NY" });
   const [offset, setOffset] = useState(0);
 
-  const fetchProperties = async (
-    city = "New York",
-    state = "NY",
-    offsetNum = 0
-  ) => {
+  const fetchProperties = async (city, state, offsetNum) => {
     setIsLoading(true);
     setError(null);
     try {
       const response = await fetch(
-        `/api/rentcast-properties?city=${encodeURIComponent(
-          city
-        )}&state=${state}&offset=${offsetNum}&limit=10`
+        `/api/properties?city=${encodeURIComponent(city)}&state=${encodeURIComponent(
+          state
+        )}&offset=${offsetNum}&limit=9`
       );
-
-      if (!response.ok) {
-        throw new Error("Failed to fetch properties");
-      }
-
       const data = await response.json();
 
-      if (data && Array.isArray(data)) {
-        setProperties((prevProperties) =>
-          offsetNum === 0 ? data : [...prevProperties, ...data]
-        );
-      } else {
-        setError("No properties found for this location");
+      if (!response.ok) {
+        throw new Error(data.error || "Failed to fetch properties");
       }
+
+      const nextProperties = Array.isArray(data.properties) ? data.properties : [];
+      setTotal(data.total || 0);
+      setProperties((prev) =>
+        offsetNum === 0 ? nextProperties : [...prev, ...nextProperties]
+      );
     } catch (err) {
-      setError("Failed to load properties. Please try again.");
+      setError(err.message || "Failed to load properties. Please try again.");
       console.error("Error:", err);
     } finally {
       setIsLoading(false);
@@ -47,50 +42,69 @@ export function PropertySearch() {
   };
 
   useEffect(() => {
-    fetchProperties();
+    fetchProperties("Mineola", "NY", 0);
   }, []);
 
   const handleSearch = (city, state) => {
+    const nextQuery = {
+      city: city.trim(),
+      state: state.trim().toUpperCase(),
+    };
+    setQuery(nextQuery);
     setOffset(0);
-    fetchProperties(city, state, 0);
+    fetchProperties(nextQuery.city, nextQuery.state, 0);
   };
 
   const loadMore = () => {
-    const newOffset = offset + 10;
+    const newOffset = offset + 9;
     setOffset(newOffset);
-    fetchProperties(undefined, undefined, newOffset);
+    fetchProperties(query.city, query.state, newOffset);
   };
 
+  const hasMore = properties.length > 0 && properties.length < total;
+
   return (
-    <div className="max-w-6xl mx-auto px-4">
+    <div>
       <PropertySearchForm onSearch={handleSearch} />
+      <p className="mb-6 text-sm text-stone-500">
+        Active homes for sale. This is separate from the{" "}
+        <a
+          href="https://karlaleon.kw.com/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-pine underline-offset-4 hover:underline"
+        >
+          Keller Williams site
+        </a>
+        .
+      </p>
       {error ? (
-        <div className="text-center text-red-500 p-4 bg-red-50 rounded-lg">
+        <div className="rounded-2xl bg-red-50 p-4 text-center text-red-700">
           {error}
         </div>
       ) : (
         <>
           {isLoading && offset === 0 ? (
-            <div className="flex justify-center items-center p-8">
-              <Loader2 className="h-8 w-8 animate-spin text-blue-500" />
+            <div className="flex items-center justify-center p-8">
+              <Loader2 className="h-8 w-8 animate-spin text-pine" />
             </div>
           ) : (
             <>
               <PropertyList properties={properties} />
-              {properties.length > 0 && (
-                <div className="mt-8 text-center pb-8">
+              {hasMore && (
+                <div className="mt-8 pb-8 text-center">
                   <button
                     onClick={loadMore}
                     disabled={isLoading}
-                    className="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors disabled:opacity-50"
+                    className="rounded-full bg-pine px-6 py-3 text-white hover:bg-[#14332f] disabled:opacity-50"
                   >
                     {isLoading ? (
-                      <div className="flex items-center gap-2">
+                      <span className="flex items-center gap-2">
                         <Loader2 className="h-4 w-4 animate-spin" />
                         Loading...
-                      </div>
+                      </span>
                     ) : (
-                      "Load More Properties"
+                      "Load more"
                     )}
                   </button>
                 </div>

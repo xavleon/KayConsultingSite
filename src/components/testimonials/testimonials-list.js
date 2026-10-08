@@ -1,6 +1,3 @@
-import Image from "next/image";
-import { Card, CardContent } from "@/components/ui/card";
-
 const testimonials = [
   {
     name: "Alice Johnson",
@@ -48,40 +45,21 @@ const testimonials = [
 
 export function TestimonialsList() {
   return (
-    <section className="py-24 bg-white">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
-          {testimonials.map((testimonial, index) => (
-            <Card
-              key={index}
-              className="bg-white shadow-lg hover:shadow-xl transition-shadow duration-300"
-            >
-              <CardContent className="p-6">
-                <div className="flex flex-col items-center mb-4 text-center">
-                  <div className="w-20 h-20 rounded-full overflow-hidden mb-4 bg-blue-100">
-                    <Image
-                      src={testimonial.image}
-                      alt={testimonial.name}
-                      width={80}
-                      height={80}
-                      className="object-cover"
-                    />
-                  </div>
-                  <div>
-                    <h3 className="font-semibold text-lg text-gray-900">
-                      {testimonial.name}
-                    </h3>
-                    <p className="text-sm text-blue-600">{testimonial.role}</p>
-                  </div>
-                </div>
-                <p className="text-gray-600 text-center italic">
-                  &ldquo;{testimonial.content}&rdquo;
-                </p>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
-      </div>
-    </section>
+    <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+      {testimonials.map((testimonial) => (
+        <figure
+          key={testimonial.name}
+          className="flex flex-col justify-between rounded-3xl bg-white p-7"
+        >
+          <blockquote className="text-sm leading-7 text-stone-700">
+            “{testimonial.content}”
+          </blockquote>
+          <figcaption className="mt-8">
+            <p className="font-semibold text-ink">{testimonial.name}</p>
+            <p className="text-sm text-stone-500">{testimonial.role}</p>
+          </figcaption>
+        </figure>
+      ))}
+    </div>
   );
 }

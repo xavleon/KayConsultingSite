@@ -1,6 +1,5 @@
 "use client";
 import { useState } from "react";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { ChevronDown, ChevronUp } from "lucide-react";
 
 const faqs = [
@@ -43,36 +42,32 @@ export function FAQList() {
   };
 
   return (
-    <section className="py-24 bg-white">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="max-w-3xl mx-auto space-y-6">
-          {faqs.map((faq, index) => (
-            <Card key={index} className="border-blue-200 overflow-hidden">
-              <CardHeader
-                className="cursor-pointer hover:bg-blue-50 transition-colors duration-200"
-                onClick={() => toggleFAQ(index)}
-              >
-                <CardTitle className="flex justify-between items-center text-lg font-semibold text-gray-900">
-                  {faq.question}
-                  {openIndexes.includes(index) ? (
-                    <ChevronUp className="w-5 h-5 text-blue-600" />
-                  ) : (
-                    <ChevronDown className="w-5 h-5 text-blue-600" />
-                  )}
-                </CardTitle>
-              </CardHeader>
-              <CardContent
-                className={`transition-all duration-300 ease-in-out ${
-                  openIndexes.includes(index)
-                    ? "max-h-96 opacity-100"
-                    : "max-h-0 opacity-0"
-                }`}
-              >
-                <p className="text-gray-600 pt-4">{faq.answer}</p>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
+    <section className="mt-12">
+      <div className="mx-auto max-w-3xl space-y-3">
+        {faqs.map((faq, index) => (
+          <article
+            key={faq.question}
+            className="overflow-hidden rounded-2xl border border-stone-200 bg-white"
+          >
+            <button
+              type="button"
+              className="flex w-full items-center justify-between gap-4 px-5 py-4 text-left"
+              onClick={() => toggleFAQ(index)}
+            >
+              <span className="font-medium text-ink">{faq.question}</span>
+              {openIndexes.includes(index) ? (
+                <ChevronUp className="h-5 w-5 shrink-0 text-pine" />
+              ) : (
+                <ChevronDown className="h-5 w-5 shrink-0 text-stone-400" />
+              )}
+            </button>
+            {openIndexes.includes(index) && (
+              <p className="px-5 pb-5 text-sm leading-6 text-stone-600">
+                {faq.answer}
+              </p>
+            )}
+          </article>
+        ))}
       </div>
     </section>
   );

@@ -7,13 +7,13 @@ export const metadata = {
 
 export default function MortgageCalculatorPage() {
   return (
-    <main className="min-h-screen pt-16">
-      <Hero />
-      <section className="py-24 bg-gray-100">
-        <div className="container mx-auto px-4">
+    <main className="min-h-screen bg-paper pb-28 pt-28">
+      <div className="mx-auto max-w-6xl px-6 lg:px-8">
+        <Hero />
+        <div className="mt-10">
           <MortgageCalculator />
         </div>
-      </section>
+      </div>
     </main>
   );
 }
