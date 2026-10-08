@@ -25,7 +25,7 @@ export function Content() {
                 My Approach
               </h3>
               <p className="text-blue-200">
-                I take a personalized approach to each client's needs, ensuring
+                I take a personalized approach to each client&apos;s needs, ensuring
                 that their financial records are maintained with the highest
                 level of accuracy and attention to detail. In real estate, I
                 apply the same dedication to helping clients find or sell their
